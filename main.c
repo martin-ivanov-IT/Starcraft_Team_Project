@@ -28,10 +28,10 @@ int main() {
   const int buffSize = 50;
   char terranFleet[buffSize];
   char protossFleet[buffSize];
-  printf("enter terrantFllets\n");
+  printf("enter terrantFlеets\n");
   scanf("%s", terranFleet);
   fflush(stdin);
-  printf("enter protossFllets\n");
+  printf("enter protossFlеets\n");
   scanf("%s", protossFleet);
  
   BattleField battleField;
