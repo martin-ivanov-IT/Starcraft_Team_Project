@@ -3,46 +3,31 @@
 #include "Defines.h"
 #include <stdio.h>
 #include <stdlib.h>
-void initAirship(char c, Airship* ship){
-   if(c == 'v'){
-      ship->type = VIKING;
-      ship->health = VIKING_HEALTH;
-      ship->shield = 0;
-      ship->shieldRegenerateRate = 0;
-      ship->demage = VIKING_DAMAGE;
-    }
-    else if (c =='b'){
-      ship->type = BATTLE_CRUSER;
-      ship->health = BATTLE_CRUSER_HEALTH;
-      ship->shield = 0;
-      ship->shieldRegenerateRate = 0;
-      ship->demage = BATTLE_BRUSER_DAMAGE;
-    }
-    else if(c == 'p'){
-      ship->type = PHOENIX;
-      ship->health = PHOENIX_HEALTH;
-      ship->shield = PHOENIX_SHIELD;
-      ship->shieldRegenerateRate = PHOENIX_SHIELD_REGENERATE_RATE;
-      ship->demage = PHOENIX_DAMAGE;
-    }
-    else if (c == 'c'){
-      ship->type = CARRIER;
-      ship->health = CARRIER_HEALTH;
-      ship->shield = CARRIER_SHIELD;
-      ship->shieldRegenerateRate = CARRIER_SHIELD_REGENERATE_RATE;
-      ship->demage = CARRIER_DAMAGE;
-    }
-
+#include <string.h>
+#include "Carrier.h"
+#include "BattleCruser.h"
+#include "Viking.h"
+#include "Phoenix.h"
+void deleteLastShipFromString(char* str){
+  str[strlen(str)-1] = '\0';
 }
+
 void generateTerranFleet(BattleField *battleField, const char *terranFleetStr) {
   vectorInit(&battleField->terranFleet, sizeof(Vector));
   int i = 0;
   while (terranFleetStr[i] != '\0')
   {
-    Airship* ship;
-    ship = malloc(sizeof(Airship));
-    initAirship(terranFleetStr[i],ship);
-    vectorPush(&battleField->terranFleet, (void*)ship);
+    if(terranFleetStr[i] == 'v'){
+      Viking* viking;
+      initViking(&viking);
+      printViking(viking);
+      vectorPush(&battleField->terranFleet,viking);
+    }
+    else if(terranFleetStr[i] == 'b'){
+      BattleCruser* battleCruser;
+      initBattleCruser(&battleCruser);
+      vectorPush(&battleField->terranFleet,battleCruser);
+    }
     i++;
   }
   
@@ -53,10 +38,16 @@ void generateProtossFleet(BattleField *battleField, const char *protossFleetStr)
   int i = 0;
   while (protossFleetStr[i] != '\0')
   {
-    Airship* ship;
-    ship = malloc(sizeof(Airship));
-    initAirship(protossFleetStr[i],ship);
-    vectorPush(&battleField->protossFleet, (void*)ship);
+    if(protossFleetStr[i] == 'p'){
+      Phoenix* phoenix;
+      initPhoenix(&phoenix);
+      vectorPush(&battleField->protossFleet,phoenix);
+    }
+    else if(protossFleetStr[i] == 'c'){
+      Carrier* carrier;
+      initCarrier(&carrier);
+      vectorPush(&battleField->protossFleet,carrier);
+    }
     i++;
   }
 }
@@ -79,6 +70,15 @@ void deinit(BattleField *battleField) {
 }
 
 bool processTerranTurn(BattleField *battleField) {
+  int i;
+  for (i = 0; i < battleField->terranFleet.size; i++)
+  {
+    Ship* ship = (Ship*)vectorGet(&battleField->terranFleet,i);
+    if(ship->type == VIKING){
+        Viking* viking = (Viking*)vectorGet(&battleField->terranFleet,i);
+      }
+  }
+  
   return false;
 }
 

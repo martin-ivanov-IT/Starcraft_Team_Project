@@ -16,7 +16,17 @@ typedef struct {
   enum AirShipDefines demage;
   enum AirShipDefines shield;
   enum AirShipDefines shieldRegenerateRate;
-} Airship;
+} ProtossAirship;
+
+typedef struct {
+  enum AirShipType type;
+  enum AirShipDefines health;
+  enum AirShipDefines demage;
+} TerranAirship;
+
+typedef struct {
+  enum AirShipType type;
+} Ship;
 
 void generateTerranFleet(BattleField *battleField, const char *terranFleetStr);
 void generateProtossFleet(BattleField *battleField, const char *protossFleetStr);

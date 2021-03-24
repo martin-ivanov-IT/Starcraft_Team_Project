@@ -3,25 +3,35 @@
 #include "Defines.h"
 #include "Vector.h"
 #include "BattleField.h"
-void printShip(Airship* currShip){
-  if(currShip->type == VIKING){
-      printf("VIKING\n");
-  }
-  else if(currShip->type == BATTLE_CRUSER){
-      printf("BATTLE CRUSER\n");
-  }
-  else if(currShip->type == PHOENIX){
-      printf("Pheonix\n");
-  }
-  else if(currShip->type == CARRIER){
-      printf("CARRIER\n");
-  }
+#include "Airships.h"
+#include "string.h"
 
-  printf("Health: %d\n",currShip->health);
-  printf("Shield: %d\n",currShip->shield);
-  printf("Shield RegenerateRate: %d\n",currShip->shieldRegenerateRate);
-  printf("Demage: %d\n",currShip->demage);
+void printViking2(Viking* viking){
+  printf("VIKING\n");
+  printf("Health: %d\n",viking->health);
+  printf("Demage: %d\n",viking->demage);
+}
 
+void printBattleCruser(BattleCruser* battleCruser){
+  printf("BATTLE CRUSER\n");
+  printf("Health: %d\n",battleCruser->health);
+  printf("Demage: %d\n",battleCruser->demage);
+}
+
+void printPhoenix(Phoenix* phoenix){
+  printf("Pheonix\n");
+  printf("Health: %d\n",phoenix->health);
+  printf("Demage: %d\n",phoenix->demage);
+  printf("Shield RegenerateRate: %d\n",phoenix->shieldRegenerateRate);
+  printf("Demage: %d\n",phoenix->demage);
+}
+
+void printCarrier(Carrier* carrier){
+  printf("Carrier\n");
+  printf("Health: %d\n",carrier->health);
+  printf("Demage: %d\n",carrier->demage);
+  printf("Shield RegenerateRate: %d\n",carrier->shieldRegenerateRate);
+  printf("Demage: %d\n",carrier->demage);
 }
 
 int main() {
@@ -37,20 +47,38 @@ int main() {
   BattleField battleField;
   generateTerranFleet(&battleField, terranFleet);
   generateProtossFleet(&battleField, protossFleet);
-  int i;
 
+  int i;
   for (i = 0; i < battleField.terranFleet.size; i++)
   {
-    Airship* currShip = (Airship*)vectorGet(&battleField.terranFleet,i);
-    printShip(currShip);
+    if(terranFleet[i] == 'v'){
+      Ship* ship = (Ship*)vectorGet(&battleField.terranFleet,i);
+      if(ship->type == VIKING){
+        Viking* viking = (Viking*)vectorGet(&battleField.terranFleet,i);
+        printViking2(viking);
+      }
+      
+    }
+    if(terranFleet[i] == 'b'){
+      BattleCruser* battleCruser = (BattleCruser*)vectorGet(&battleField.terranFleet,i);
+      printBattleCruser(battleCruser);
+    }
+    
   }
 
   printf("-----\n");
 
   for (i = 0; i < battleField.protossFleet.size; i++)
   {
-    Airship* currShip = (Airship*)vectorGet(&battleField.protossFleet,i);
-    printShip(currShip);
+    if(protossFleet[i] == 'p'){
+        Phoenix* phoenix = (Phoenix*)vectorGet(&battleField.protossFleet,i);
+        printPhoenix(phoenix);
+      }
+
+      if(protossFleet[i] == 'c'){
+        Carrier* carrier = (Carrier*)vectorGet(&battleField.protossFleet,i);
+        printCarrier(carrier);
+      }
     
   }
   
