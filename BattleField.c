@@ -20,7 +20,6 @@ void generateTerranFleet(BattleField *battleField, const char *terranFleetStr) {
     if(terranFleetStr[i] == 'v'){
       Viking* viking;
       initViking(&viking);
-      printViking(viking);
       vectorPush(&battleField->terranFleet,viking);
     }
     else if(terranFleetStr[i] == 'b'){
@@ -71,11 +70,26 @@ void deinit(BattleField *battleField) {
 
 bool processTerranTurn(BattleField *battleField) {
   int i;
+  Ship* lastOfEnemy = vectorBack(&battleField->protossFleet);
   for (i = 0; i < battleField->terranFleet.size; i++)
   {
     Ship* ship = (Ship*)vectorGet(&battleField->terranFleet,i);
     if(ship->type == VIKING){
         Viking* viking = (Viking*)vectorGet(&battleField->terranFleet,i);
+
+        if(lastOfEnemy->type == PHOENIX){
+          Phoenix* phoenix = (Phoenix*)vectorGet(&battleField->terranFleet,i);
+          VikingAtackPhoenix(viking,phoenix);
+        }
+
+        if(lastOfEnemy->type == CARRIER){
+          Carrier* carrier = (Carrier*)vectorGet(&battleField->terranFleet,i);
+          VikingAtackCarrier(viking,carrier);
+        }
+
+      }
+      if(ship->type == BATTLE_CRUSER){
+        BattleCruser* battleCruser = (BattleCruser*)vectorGet(&battleField->terranFleet,i);
       }
   }
   

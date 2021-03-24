@@ -55,7 +55,10 @@ int main() {
       Ship* ship = (Ship*)vectorGet(&battleField.terranFleet,i);
       if(ship->type == VIKING){
         Viking* viking = (Viking*)vectorGet(&battleField.terranFleet,i);
-        printViking2(viking);
+        
+      }
+      else if(ship->type == BATTLE_CRUSER){
+
       }
       
     }
