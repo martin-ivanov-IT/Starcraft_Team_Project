@@ -35,7 +35,7 @@ void carrierAtackViking(Viking* viking, Carrier* carrier){
     int i;
     for (i = 0; i < carrier->interceptors; i++)
     {
-        viking->health -= carrier->demage;
+        viking->health -= CARRIER_DAMAGE;
         carrier->interceptors--;
         if(viking->health<=0){
             break;

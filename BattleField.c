@@ -13,7 +13,7 @@ void deleteLastShipFromString(char* str){
 }
 
 void generateTerranFleet(BattleField *battleField, const char *terranFleetStr) {
-  vectorInit(&battleField->terranFleet, sizeof(Vector));
+  vectorInit(&battleField->terranFleet, strlen(terranFleetStr));
   int i = 0;
   while (terranFleetStr[i] != '\0')
   {
@@ -33,7 +33,7 @@ void generateTerranFleet(BattleField *battleField, const char *terranFleetStr) {
 }
 
 void generateProtossFleet(BattleField *battleField, const char *protossFleetStr) {
-  vectorInit(&battleField->protossFleet, sizeof(Vector));
+  vectorInit(&battleField->protossFleet, strlen(protossFleetStr));
   int i = 0;
   while (protossFleetStr[i] != '\0')
   {
