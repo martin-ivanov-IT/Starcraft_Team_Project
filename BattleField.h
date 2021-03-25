@@ -10,14 +10,6 @@ typedef struct {
   Vector protossFleet;
 } BattleField;
 
-typedef struct {
-  enum AirShipType type;
-  enum AirShipDefines health;
-  enum AirShipDefines demage;
-  enum AirShipDefines shield;
-  enum AirShipDefines shieldRegenerateRate;
-} Airship;
-
 void generateTerranFleet(BattleField *battleField, const char *terranFleetStr);
 void generateProtossFleet(BattleField *battleField, const char *protossFleetStr);
 
