@@ -3,6 +3,8 @@
 #include "Defines.h"
 #include "Vector.h"
 #include "BattleField.h"
+#include "Airship.h"
+
 void printShip(Airship* currShip){
   if(currShip->type == VIKING){
       printf("VIKING\n");
