@@ -5,31 +5,17 @@
 
 typedef struct {
   enum AirShipType type;
-  enum AirShipDefines health;
-  enum AirShipDefines demage;
-} BattleCruser;
+  int health;
+  int demage;
+  int shield;
+  int shieldRegenerateRate;
+  int atacks;
+} ProtossAirship;
 
 typedef struct {
   enum AirShipType type;
-  enum AirShipDefines health;
-  enum AirShipDefines demage;
-  enum AirShipDefines shield;
-  enum AirShipDefines shieldRegenerateRate;
-  int interceptors;
-} Carrier;
-
-typedef struct {
-  enum AirShipType type;
-  enum AirShipDefines health;
-  enum AirShipDefines demage;
-  enum AirShipDefines shield;
-  enum AirShipDefines shieldRegenerateRate;
-} Phoenix;
-
-typedef struct {
-  enum AirShipType type;
-  enum AirShipDefines health;
-  enum AirShipDefines demage;
-} Viking;
+  int health;
+  int demage;
+} TerranAirship;
 
 #endif

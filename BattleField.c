@@ -4,29 +4,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "Carrier.h"
-#include "BattleCruser.h"
-#include "Viking.h"
-#include "Phoenix.h"
+#include "TerranAirship.h"
+#include "ProtossAirship.h"
 void deleteLastShipFromString(char* str){
   str[strlen(str)-1] = '\0';
 }
+
 
 void generateTerranFleet(BattleField *battleField, const char *terranFleetStr) {
   vectorInit(&battleField->terranFleet, strlen(terranFleetStr));
   int i = 0;
   while (terranFleetStr[i] != '\0')
   {
-    if(terranFleetStr[i] == 'v'){
-      Viking* viking;
-      initViking(&viking);
-      vectorPush(&battleField->terranFleet,viking);
-    }
-    else if(terranFleetStr[i] == 'b'){
-      BattleCruser* battleCruser;
-      initBattleCruser(&battleCruser);
-      vectorPush(&battleField->terranFleet,battleCruser);
-    }
+      TerranAirship* terranAirship;
+      initTerranAirship(&terranAirship, terranFleetStr[i]);
+      vectorPush(&battleField->terranFleet,terranAirship);  
     i++;
   }
   
@@ -37,23 +29,18 @@ void generateProtossFleet(BattleField *battleField, const char *protossFleetStr)
   int i = 0;
   while (protossFleetStr[i] != '\0')
   {
-    if(protossFleetStr[i] == 'p'){
-      Phoenix* phoenix;
-      initPhoenix(&phoenix);
-      vectorPush(&battleField->protossFleet,phoenix);
-    }
-    else if(protossFleetStr[i] == 'c'){
-      Carrier* carrier;
-      initCarrier(&carrier);
-      vectorPush(&battleField->protossFleet,carrier);
-    }
+      ProtossAirship* protossAirship;
+      initProtossAirship(&protossAirship, protossFleetStr[i]);
+      vectorPush(&battleField->protossFleet, protossAirship);  
     i++;
   }
 }
 
 void startBattle(BattleField *battleField) {
+  int turn = 0;
   while (true) {
-    if (processTerranTurn(battleField)) {
+    turn ++;
+    if (processTerranTurn(battleField, turn)) {
       printf("TERRAN has won!\n");
       break;
     }
@@ -68,35 +55,78 @@ void startBattle(BattleField *battleField) {
 void deinit(BattleField *battleField) {
 }
 
-bool processTerranTurn(BattleField *battleField) {
-  int i;
-  Ship* lastOfEnemy = vectorBack(&battleField->protossFleet);
-  for (i = 0; i < battleField->terranFleet.size; i++)
-  {
-    Ship* ship = (Ship*)vectorGet(&battleField->terranFleet,i);
-    if(ship->type == VIKING){
-        Viking* viking = (Viking*)vectorGet(&battleField->terranFleet,i);
-
-        if(lastOfEnemy->type == PHOENIX){
-          Phoenix* phoenix = (Phoenix*)vectorGet(&battleField->terranFleet,i);
-          VikingAtackPhoenix(viking,phoenix);
-        }
-
-        if(lastOfEnemy->type == CARRIER){
-          Carrier* carrier = (Carrier*)vectorGet(&battleField->terranFleet,i);
-          VikingAtackCarrier(viking,carrier);
-        }
-
-      }
-      if(ship->type == BATTLE_CRUSER){
-        BattleCruser* battleCruser = (BattleCruser*)vectorGet(&battleField->terranFleet,i);
-      }
+bool processTerranTurn(BattleField *battleField, int turn) {
+  int terranSize = battleField->terranFleet.size;
+  ProtossAirship* lastOfProtoss;
+  for (int i = 0; i < terranSize; i++){
+    lastOfProtoss = vectorBack(&battleField->protossFleet);
+    TerranAirship* terranAirship = (TerranAirship*)vectorGet(&battleField->terranFleet, i);
+    TerranAtack(lastOfProtoss, terranAirship, turn);
+    if(lastOfProtoss->health <= 0){
+      printDeadProtoss(terranAirship, lastOfProtoss);
+      vectorPop(&battleField->protossFleet);
+      lastOfProtoss = vectorBack(&battleField->protossFleet);
+    }
+    if(battleField->protossFleet.size == 0){
+      return true;
+    }
+    
   }
-  
+  printTerranAtack(lastOfProtoss);
+  ProtosAfterTurn(lastOfProtoss);
   return false;
 }
 
 bool processProtossTurn(BattleField *battleField) {
+  int protossSize = battleField->protossFleet.size;
+  TerranAirship* lastOfTerran = vectorBack(&battleField->terranFleet);
+  for (int i = 0; i < protossSize; i++)
+  {
+    ProtossAirship* protossAirship = (ProtossAirship*)vectorGet(&battleField->protossFleet, i);
+    ProtossAtack(lastOfTerran, protossAirship);
+    if(lastOfTerran->health <= 0){
+      printDeadTerran(protossAirship, lastOfTerran);
+      vectorPop(&battleField->terranFleet);
+    }
+    lastOfTerran = vectorBack(&battleField->terranFleet);
+
+    if(battleField->terranFleet.size == 0){
+      return true;
+    }
+    if(protossAirship->atacks > 0){
+      ProtossAtack(lastOfTerran, protossAirship);
+    }
+    updateProtossAtacks(protossAirship);
+  }
+  if(isDamagedTerran(lastOfTerran)){
+      printProtossAtack(lastOfTerran);
+    }
   return false;
 }
+
+void printProtossAtack(TerranAirship* terranAirship){
+printf("Last Terran AirShip has %d health left\n",terranAirship->health);
+}
+void printTerranAtack(ProtossAirship* protossAirship){
+  printf("Last Protoss AirShip has %d health and %d shield left\n",protossAirship->health, protossAirship->shield);
+}
+void printDeadTerran(ProtossAirship* protossAirship,TerranAirship* lastOfTerran){
+  if(protossAirship->type == PHOENIX){
+    printf("Phoenix killed enemy airship\n");
+  }
+  else if(protossAirship->type == CARRIER){
+    printf("Carrier killed enemy airship\n");
+  }
+}
+
+void printDeadProtoss(TerranAirship* terranAirship, ProtossAirship* lastOfProtoss){
+  if(terranAirship->type == VIKING){
+    printf("Viking killed enemy airship\n");
+  }
+  else if(terranAirship->type == BATTLE_CRUSER){
+    printf("Battle cruiser killed enemy airship\n");
+  }
+}
+
+
 
