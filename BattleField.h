@@ -4,6 +4,7 @@
 #include <stdbool.h>
 
 #include "Vector.h"
+#include "Airships.h"
 
 typedef struct {
   Vector terranFleet;
@@ -17,7 +18,11 @@ void startBattle(BattleField *battleField);
 
 void deinit(BattleField *battleField);
 
-bool processTerranTurn(BattleField *battleField);
+bool processTerranTurn(BattleField *battleField, int turn);
 bool processProtossTurn(BattleField *battleField);
+void printProtossAtack(int ID, TerranAirship* terranAirship);
+void printTerranAtack(int ID, ProtossAirship* protossAirship);
+void printDeadTerran(ProtossAirship* protossAirship, int attackerID, int enemyID);
+void printDeadProtoss(TerranAirship* terranAirship, int attackerID, int enemyID);
 
 #endif /* BATTLEFIELD_H_ */

@@ -1,7 +1,7 @@
 CC=gcc
 COMPILE=$(CC) -g
 CFILES=$(dir \s *.c*)
-OBJECT=main.o BattleField.o Vector.o
+OBJECT=main.o BattleField.o Vector.o ProtossAirship.o TerranAirship.o
 TARGET=launch
 $(TARGET):$(OBJECT)
 	$(COMPILE) -o $@ $(OBJECT)

@@ -75,7 +75,7 @@ void vectorPop(Vector *vec) {
   if (vec->size == 0) {
     return;
   }
-  //vec->items[vec->size-1] = NULL;
+  vec->items[vec->size-1] = NULL;
   vec->size--;
 }
 

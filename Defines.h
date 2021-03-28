@@ -30,7 +30,15 @@ enum CarrierDefines {
 };
 
 enum BattleCruserDefines {
-  YAMATO_CANNON_LOADING_TURNS = 4
+  YAMATO_CANNON_LOADING_TURNS = 5,
+  BATTLE_BRUSER_POWER_DAMAGE = 200
+};
+
+enum VikingDefines{
+  VIKING_DOUBLE_DAMAGE = 30
+};
+enum PhoenixDefines{
+  PHOENIX_ATACKS = 1
 };
 
 #endif /* DEFINES_H_ */
