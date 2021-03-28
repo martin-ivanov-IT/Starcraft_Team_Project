@@ -1,0 +1,165 @@
+#include "BattleField.h"
+#include "Vector.h"
+#include "Defines.h"
+#include "Airships.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "TerranAirship.h"
+#include "ProtossAirship.h"
+
+//Initialize and fill up TerranFleet with Terran Airships according to string input
+void generateTerranFleet(BattleField *battleField, const char *terranFleetStr)
+{
+  vectorInit(&battleField->terranFleet, strlen(terranFleetStr));
+  int i = 0;
+  while (terranFleetStr[i] != '\0')
+  {
+    TerranAirship *terranAirship;
+    initTerranAirship(&terranAirship, terranFleetStr[i]);
+    vectorPush(&battleField->terranFleet, terranAirship);
+    i++;
+  }
+}
+
+//Initialize and fill up ProtossFleet with Protoss Airships according to string input
+void generateProtossFleet(BattleField *battleField, const char *protossFleetStr)
+{
+  vectorInit(&battleField->protossFleet, strlen(protossFleetStr));
+  int i = 0;
+  while (protossFleetStr[i] != '\0')
+  {
+    ProtossAirship *protossAirship;
+    initProtossAirship(&protossAirship, protossFleetStr[i]);
+    vectorPush(&battleField->protossFleet, protossAirship);
+    i++;
+  }
+}
+// Count attack turns and check which Battelfield Fleed has remaining ships
+void startBattle(BattleField *battleField)
+{
+  int turn = 0;
+  while (true)
+  {
+    turn++;
+    if (processTerranTurn(battleField, turn))
+    {
+      printf("TERRAN has won!\n");
+      break;
+    }
+
+    if (processProtossTurn(battleField))
+    {
+      printf("PROTOSS has won!\n");
+      break;
+    }
+  }
+}
+
+// returns true when ProtossFleet has no ships left, else prints turn info and returns false
+bool processTerranTurn(BattleField *battleField, int turn)
+{
+  int terranSize = battleField->terranFleet.size;
+  // Takes last enemy ship
+  ProtossAirship *lastOfProtoss = (ProtossAirship *)vectorBack(&battleField->protossFleet);
+  int lastProtossID;
+  // Terran Airships attack one by one
+  for (int i = 0; i < terranSize; i++)
+  {
+    lastProtossID = battleField->protossFleet.size - 1;
+    TerranAirship *terranAirship = (TerranAirship *)vectorGet(&battleField->terranFleet, i);
+    TerranAtack(lastOfProtoss, terranAirship, turn);
+
+    // If Protoss ship is killed, prints ships info, removes (free the memory) the killed ship and takes the last ship again
+    if (lastOfProtoss->health <= 0)
+    {
+      printDeadProtoss(terranAirship, i, lastProtossID);
+      vectorPop(&battleField->protossFleet);
+      if (battleField->protossFleet.size == 0)
+      {
+        return true;
+      }
+      lastProtossID = battleField->protossFleet.size - 1;
+      lastOfProtoss = (ProtossAirship *)vectorBack(&battleField->protossFleet);
+    }
+    
+  }
+  printTerranAtack(lastProtossID, lastOfProtoss);
+  regenarateShield(lastOfProtoss);
+  return false;
+}
+
+// returns true when TerranFleet has no ships left, else prints turn info and returns false
+bool processProtossTurn(BattleField *battleField)
+{
+  int protossSize = battleField->protossFleet.size;
+  // Takes last enemy ship
+  TerranAirship *lastOfTerran = (TerranAirship *)vectorBack(&battleField->terranFleet);
+  int lastTerranID;
+
+  // Protoss Airships attack one by one
+  for (int i = 0; i < protossSize; i++)
+  {
+    lastTerranID = battleField->terranFleet.size - 1;
+    ProtossAirship *protossAirship = (ProtossAirship *)vectorGet(&battleField->protossFleet, i);
+    ProtossAtack(lastOfTerran, protossAirship);
+    // If Terran ship is killed, prints ships info, removes (free the memory) the killed ship and takes the last ship again
+    if (lastOfTerran->health <= 0)
+    {
+      printDeadTerran(protossAirship, i, lastTerranID);
+      vectorPop(&battleField->terranFleet);
+
+      lastOfTerran = (TerranAirship *)vectorBack(&battleField->terranFleet);
+      if (battleField->terranFleet.size == 0)
+      {
+        return true;
+      }
+      // if attacking ship has stikes left continue attack (only one ship can be killed with max strykes, because the new last ship will be with max health)
+      if (protossAirship->atacks > 0)
+      {
+        ProtossAtack(lastOfTerran, protossAirship);
+      }
+      lastTerranID = battleField->terranFleet.size - 1;
+    }
+
+    updateProtossAtacks(protossAirship); // for the next turn of Protoss Fleet
+  }
+  printProtossAtack(lastTerranID, lastOfTerran); // after all Protoss Airships have stiked
+
+  return false;
+}
+
+void printDeadTerran(ProtossAirship *protossAirship, int attackerID, int enemyID)
+{
+  printf("%s with ID: %d killed enemy airship with ID: %d\n", protossAirship->name, attackerID, enemyID);
+}
+
+void printDeadProtoss(TerranAirship *terranAirship, int attackerID, int enemyID)
+{
+  printf("%s with ID: %d killed enemy airship with ID: %d\n", terranAirship->name, attackerID, enemyID);
+}
+
+void printProtossAtack(int ID, TerranAirship *terranAirship)
+{
+  printf("Last Terran AirShip with ID: %d has %d health left\n", ID, terranAirship->health);
+}
+void printTerranAtack(int ID, ProtossAirship *protossAirship)
+{
+  printf("Last Protoss AirShip with ID: %d has %d health and %d shield left\n", ID, protossAirship->health, protossAirship->shield);
+}
+// Free the memory allocated for the Airships, then free the memory allocated for the BattleFleeds
+void deinit(BattleField *battleField)
+{
+  int terranSize = battleField->terranFleet.size;
+  for (int i = 0; i < terranSize; i++)
+  {
+    free(vectorGet(&battleField->terranFleet, i));
+  }
+  int protossSize = battleField->protossFleet.size;
+  for (int i = 0; i < protossSize; i++)
+  {
+    free(vectorGet(&battleField->protossFleet, i));
+  }
+  vectorFree(&battleField->terranFleet);
+  vectorFree(&battleField->protossFleet);
+}

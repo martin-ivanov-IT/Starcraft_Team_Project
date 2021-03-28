@@ -1,0 +1,3 @@
+C:/Users/HP/codeAcademy/Starcraft3/Starcraft_Team_Project-team_talk_27.03/build/CMakeFiles/rebuild_cache.dir
+C:/Users/HP/codeAcademy/Starcraft3/Starcraft_Team_Project-team_talk_27.03/build/CMakeFiles/starcraft.dir
+C:/Users/HP/codeAcademy/Starcraft3/Starcraft_Team_Project-team_talk_27.03/build/CMakeFiles/edit_cache.dir
