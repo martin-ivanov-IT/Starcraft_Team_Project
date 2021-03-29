@@ -7,6 +7,10 @@
 // Check ship type according input string and initialize Protoss Airship
 void initProtossAirship(ProtossAirship** protossAirship, char letter){
     (*protossAirship) = malloc(sizeof(ProtossAirship));
+    if(*protossAirship == NULL){
+        fprintf(stderr, "error by initializing! Exiting...\n");
+        exit(-1);
+    }
     if(letter == 'p'){
         initPhoenix(*protossAirship);
     }
@@ -14,7 +18,7 @@ void initProtossAirship(ProtossAirship** protossAirship, char letter){
         initCarrier(*protossAirship);
     }
     else{
-        fprintf(stderr, "No such Airship type! Exiting...\n");
+        fprintf(stderr, "wrong Airship %c type for Protoss! Exiting...\n", letter);
         exit(-1);
     }
 }

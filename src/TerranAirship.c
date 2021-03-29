@@ -7,6 +7,12 @@
 // Check ship type according input string and initialize 
 void initTerranAirship(TerranAirship** terranAirship, char letter){
     (*terranAirship) = malloc(sizeof(TerranAirship));
+
+    if(*terranAirship == NULL){
+        fprintf(stderr, "error by initializing! Exiting...\n");
+        exit(-1);
+    }
+
     if(letter == 'v'){
         initViking(*terranAirship);
     }
@@ -14,7 +20,7 @@ void initTerranAirship(TerranAirship** terranAirship, char letter){
         initBattleCruser(*terranAirship);
     }
     else{
-        fprintf(stderr, "No such Airship type! Exiting...\n");
+        fprintf(stderr, "wrong Airship %c type for Terran! Exiting...\n", letter);
         exit(-1);
     }
 }
