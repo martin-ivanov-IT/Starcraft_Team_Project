@@ -85,6 +85,7 @@ bool processTerranTurn(BattleField *battleField)
     }
     
   }
+  updateProtossAttacks(lastOfProtoss);
   printTerranAttack(lastProtossID, lastOfProtoss);
   regenarateShield(lastOfProtoss);
   return false;
