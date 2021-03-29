@@ -3,7 +3,7 @@
 void initProtossAirship(ProtossAirship** protossAirship, char letter);
 void initPhoenix(ProtossAirship* protossAirship);
 void initCarrier(ProtossAirship* protossAirship);
-void ProtossAtack(TerranAirship* terranAirship, ProtossAirship* protossAirship); 
+void ProtossAttack(TerranAirship* terranAirship, ProtossAirship* protossAirship); 
 void regenarateShield(ProtossAirship* protossAirship);
-void updateProtossAtacks(ProtossAirship* protossAirship);
+void updateProtossAttacks(ProtossAirship* protossAirship);
 

@@ -9,7 +9,7 @@ typedef struct {
   short damage;
   short shield;
   short shieldRegenerateRate;
-  short atacks;
+  short attacks;
   char * name;
 } ProtossAirship;
 

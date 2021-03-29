@@ -38,7 +38,7 @@ enum VikingDefines{
   VIKING_DOUBLE_DAMAGE = 30
 };
 enum PhoenixDefines{
-  PHOENIX_ATACKS = 1
+  PHOENIX_ATTACKS = 1
 };
 
 #endif /* DEFINES_H_ */

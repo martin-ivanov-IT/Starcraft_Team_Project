@@ -20,7 +20,7 @@ void initPhoenix(ProtossAirship* protossAirship){
     protossAirship->shield = (short)PHOENIX_SHIELD;
     protossAirship->shieldRegenerateRate = (short)PHOENIX_SHIELD_REGENERATE_RATE;
     protossAirship->damage = (short)PHOENIX_DAMAGE;
-    protossAirship->atacks = (short)PHOENIX_ATACKS;
+    protossAirship->attacks = (short)PHOENIX_ATTACKS;
     protossAirship->name = "Phoenix";
 }
 
@@ -31,18 +31,18 @@ void initCarrier(ProtossAirship* protossAirship){
     protossAirship->shield = (short)CARRIER_SHIELD;
     protossAirship->shieldRegenerateRate = (short)CARRIER_SHIELD_REGENERATE_RATE;
     protossAirship->damage = (short)CARRIER_DAMAGE;
-    protossAirship->atacks = (short)MAX_INTERCEPTORS;
+    protossAirship->attacks = (short)MAX_INTERCEPTORS;
     protossAirship->name = "Carrier";
 }
 
 // Protoss Airship produce attack until Terran Airship is killed or strikes are finished
-void ProtossAtack(TerranAirship* terranAirship, ProtossAirship* protossAirship){
+void ProtossAttack(TerranAirship* terranAirship, ProtossAirship* protossAirship){
     int i;
-    short countIterations =  protossAirship->atacks;
+    short countIterations =  protossAirship->attacks;
     for (i = 0; i < countIterations; i++)
     {
         terranAirship->health -= protossAirship->damage;
-        protossAirship->atacks--;
+        protossAirship->attacks--;
         if(terranAirship->health <= 0){
             break;
         }
@@ -50,16 +50,16 @@ void ProtossAtack(TerranAirship* terranAirship, ProtossAirship* protossAirship){
 }
 
 // Calculate number of strikes of the current attacking Protoss Airship
-void updateProtossAtacks(ProtossAirship* protossAirship){
+void updateProtossAttacks(ProtossAirship* protossAirship){
     if(protossAirship->type == PHOENIX){
-        protossAirship->atacks = PHOENIX_ATACKS;
+        protossAirship->attacks = PHOENIX_ATTACKS;
     }
     else if(protossAirship->type == CARRIER){
         if(protossAirship->health == CARRIER_HEALTH){
-            protossAirship->atacks = MAX_INTERCEPTORS;
+            protossAirship->attacks = MAX_INTERCEPTORS;
         }
         else if(protossAirship->health < CARRIER_HEALTH){
-            protossAirship->atacks = DAMAGED_STATUS_INTERCEPTORS;
+            protossAirship->attacks = DAMAGED_STATUS_INTERCEPTORS;
         }
     }
 }
@@ -82,7 +82,7 @@ void regenarateShield(ProtossAirship* protossAirship){
                 protossAirship->shield += CARRIER_SHIELD_REGENERATE_RATE;
             }
     }
-    updateProtossAtacks(protossAirship);
+    updateProtossAttacks(protossAirship);
 }
 
 

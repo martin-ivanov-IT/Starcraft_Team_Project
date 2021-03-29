@@ -18,10 +18,10 @@ void startBattle(BattleField *battleField);
 
 void deinit(BattleField *battleField);
 
-bool processTerranTurn(BattleField *battleField, int turn);
+bool processTerranTurn(BattleField *battleField);
 bool processProtossTurn(BattleField *battleField);
-void printProtossAtack(int ID, TerranAirship* terranAirship);
-void printTerranAtack(int ID, ProtossAirship* protossAirship);
+void printProtossAttack(int ID, TerranAirship* terranAirship);
+void printTerranAttack(int ID, ProtossAirship* protossAirship);
 void printDeadTerran(ProtossAirship* protossAirship, int attackerID, int enemyID);
 void printDeadProtoss(TerranAirship* terranAirship, int attackerID, int enemyID);
 
