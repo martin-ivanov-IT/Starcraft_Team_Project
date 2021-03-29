@@ -1,6 +1,7 @@
 #include "Defines.h"
 #include "Airships.h"
 #include <stdlib.h>
+#include <stdio.h>
 #include"ProtossAirship.h"
 
 // Check ship type according input string and initialize Protoss Airship
@@ -11,6 +12,10 @@ void initProtossAirship(ProtossAirship** protossAirship, char letter){
     }
     else if(letter == 'c'){
         initCarrier(*protossAirship);
+    }
+    else{
+        fprintf(stderr, "No such Airship type! Exiting...\n");
+        exit(-1);
     }
 }
 // assign values (see Defines.h) to the ProtossAirship struct elements for Phoenix Airship

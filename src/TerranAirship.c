@@ -1,6 +1,7 @@
 #include "Defines.h"
 #include "Airships.h"
 #include <stdlib.h>
+#include <stdio.h>
 #include "TerranAirship.h"
 
 // Check ship type according input string and initialize 
@@ -13,7 +14,8 @@ void initTerranAirship(TerranAirship** terranAirship, char letter){
         initBattleCruser(*terranAirship);
     }
     else{
-        *terranAirship = NULL;
+        fprintf(stderr, "No such Airship type! Exiting...\n");
+        exit(-1);
     }
 }
 // assign values (see Defines.h) to the TerranAirship struct elements for Viking Airship

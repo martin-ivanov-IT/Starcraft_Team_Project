@@ -18,7 +18,6 @@ void generateTerranFleet(BattleField *battleField, const char *terranFleetStr)
   {
     TerranAirship *terranAirship;
     initTerranAirship(&terranAirship, terranFleetStr[i]);
-    //??
     vectorPush(&battleField->terranFleet, terranAirship);
     i++;
   }
