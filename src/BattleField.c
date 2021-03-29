@@ -18,6 +18,7 @@ void generateTerranFleet(BattleField *battleField, const char *terranFleetStr)
   {
     TerranAirship *terranAirship;
     initTerranAirship(&terranAirship, terranFleetStr[i]);
+    //??
     vectorPush(&battleField->terranFleet, terranAirship);
     i++;
   }
@@ -69,7 +70,7 @@ bool processTerranTurn(BattleField *battleField)
   {
     lastProtossID = battleField->protossFleet.size - 1;
     TerranAirship *terranAirship = (TerranAirship *)vectorGet(&battleField->terranFleet, i);
-    TerranAttack(lastOfProtoss, terranAirship, turn);
+    TerranAttack(lastOfProtoss, terranAirship);
 
     // If Protoss ship is killed, prints ships info, removes (free the memory) the killed ship and takes the last ship again
     if (lastOfProtoss->health <= 0)

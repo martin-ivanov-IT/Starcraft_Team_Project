@@ -25,4 +25,5 @@ void printTerranAttack(int ID, ProtossAirship* protossAirship);
 void printDeadTerran(ProtossAirship* protossAirship, int attackerID, int enemyID);
 void printDeadProtoss(TerranAirship* terranAirship, int attackerID, int enemyID);
 
+
 #endif /* BATTLEFIELD_H_ */

@@ -12,6 +12,9 @@ void initTerranAirship(TerranAirship** terranAirship, char letter){
     else if(letter == 'b'){
         initBattleCruser(*terranAirship);
     }
+    else{
+        *terranAirship = NULL;
+    }
 }
 // assign values (see Defines.h) to the TerranAirship struct elements for Viking Airship
 void initViking(TerranAirship* viking){
@@ -28,7 +31,7 @@ void initBattleCruser(TerranAirship* battleCruser){
     battleCruser->name = "BattleCruser";
 }
 // calculate damage variable according to ships involved and the turn number and produce attack
-void TerranAttack(ProtossAirship* protossAirship, TerranAirship* terranAirship, int turn){
+void TerranAttack(ProtossAirship* protossAirship, TerranAirship* terranAirship){
     short damage = terranAirship->damage;
     if(protossAirship->type == PHOENIX && terranAirship->type == VIKING){
         damage = VIKING_DOUBLE_DAMAGE;
