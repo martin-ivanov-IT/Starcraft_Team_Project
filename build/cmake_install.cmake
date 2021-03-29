@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/HP/codeAcademy/Starcraft3/Starcraft_Team_Project-team_talk_27.03
+# Install script for directory: C:/Users/HP/codeAcademy/Starcraft_Team_Project_third_branch/Starcraft_Team_Project
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/HP/codeAcademy/Starcraft3/Starcraft_Team_Project-team_talk_27.03/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/HP/codeAcademy/Starcraft_Team_Project_third_branch/Starcraft_Team_Project/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
