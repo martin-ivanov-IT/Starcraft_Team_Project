@@ -49,18 +49,18 @@ void initCarrier(ProtossAirship* protossAirship){
 bool ProtossAttack(TerranAirship** terranAirship, ProtossAirship* protossAirship,BattleField* battlefield,int atackerID, int* lastTerranID){
     setProtossAttacks(protossAirship);
     for(int i=0;i<protossAirship->attacks;i++){
-            (*terranAirship)->health -= protossAirship->damage;
-                if( (*terranAirship)->health <= 0){
-                     *lastTerranID = battlefield->terranFleet.size - 1;
-                    // If Terran ship is killed, prints ships info, removes (free the memory) the killed ship and takes the last ship again
-                    printDeadTerran(protossAirship,atackerID,*lastTerranID);
-                    vectorPop(&battlefield->terranFleet);
-                    (*terranAirship)=(TerranAirship*)vectorBack(&battlefield->terranFleet);
-                     if(battlefield->terranFleet.size == 0 ){
-                        return true;                
-                    }
-                }     
-        }
+        (*terranAirship)->health -= protossAirship->damage;
+        if( (*terranAirship)->health <= 0){
+            *lastTerranID = battlefield->terranFleet.size - 1;
+            // If Terran ship is killed, prints ships info, removes (free the memory) the killed ship and takes the last ship again
+            printDeadTerran(protossAirship,atackerID,*lastTerranID);
+            vectorPop(&battlefield->terranFleet);
+            (*terranAirship)=(TerranAirship*)vectorBack(&battlefield->terranFleet);
+            if(battlefield->terranFleet.size == 0 ){
+            return true;                
+            }              
+        }     
+    }
     *lastTerranID = battlefield->terranFleet.size - 1;
     return false;    
 }
@@ -88,12 +88,12 @@ void regenarateShield(ProtossAirship* protossAirship){
         }
     }
     else if(protossAirship->type == CARRIER){
-            if(protossAirship->shield + CARRIER_SHIELD_REGENERATE_RATE >= CARRIER_SHIELD){
-                protossAirship->shield = CARRIER_SHIELD;
-            }
-            else{
-                protossAirship->shield += CARRIER_SHIELD_REGENERATE_RATE;
-            }
+        if(protossAirship->shield + CARRIER_SHIELD_REGENERATE_RATE >= CARRIER_SHIELD){
+            protossAirship->shield = CARRIER_SHIELD;
+        }
+        else{
+            protossAirship->shield += CARRIER_SHIELD_REGENERATE_RATE;
+        }
     }
 }
 
