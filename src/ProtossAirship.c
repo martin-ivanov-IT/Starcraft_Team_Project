@@ -65,6 +65,7 @@ bool ProtossAttack(TerranAirship** terranAirship, ProtossAirship* protossAirship
     return false;    
 }
 
+// Calculate number of strikes of the current attacking Protoss Airship
 void setProtossAttacks(ProtossAirship* protossAirship){
     if(protossAirship->type==PHOENIX){
        protossAirship->attacks=PHOENIX_ATTACKS;
