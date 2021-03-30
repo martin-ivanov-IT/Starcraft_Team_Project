@@ -1,0 +1,3 @@
+C:/Users/HP/codeAcademy/Starcraft_Team_Project-master_UPDATE/Starcraft_Team_Project-starcraft_update/Starcraft_Team_Project-starcraft_update/build/CMakeFiles/rebuild_cache.dir
+C:/Users/HP/codeAcademy/Starcraft_Team_Project-master_UPDATE/Starcraft_Team_Project-starcraft_update/Starcraft_Team_Project-starcraft_update/build/CMakeFiles/starcraft.dir
+C:/Users/HP/codeAcademy/Starcraft_Team_Project-master_UPDATE/Starcraft_Team_Project-starcraft_update/Starcraft_Team_Project-starcraft_update/build/CMakeFiles/edit_cache.dir
