@@ -102,10 +102,6 @@ bool processProtossTurn(BattleField *battleField)
   return false;
 }
 
-
-
-
-
 void printProtossAttack(int ID, TerranAirship *terranAirship)
 {
   printf("Last Terran AirShip with ID: %d has %d health left\n", ID, terranAirship->health);
