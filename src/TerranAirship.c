@@ -62,7 +62,7 @@ bool TerranAttack(ProtossAirship** protossAirship,BattleField * battleField,Terr
       {
         return true;
       }
-}
+    }
     *lastProtossID=battleField->protossFleet.size - 1;
     return false;
 }

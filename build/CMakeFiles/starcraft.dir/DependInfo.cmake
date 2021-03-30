@@ -1,20 +1,18 @@
+
+# Consider dependencies only in project.
+set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
+
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
-  "C"
   )
-# The set of files for implicit dependencies of each language:
-set(CMAKE_DEPENDS_CHECK_C
-  "D:/CODEACADEMY/Code-Academy/Starcraft_Team_Project-starcraft_update/Starcraft_Team_Project-starcraft_update/src/BattleField.c" "D:/CODEACADEMY/Code-Academy/Starcraft_Team_Project-starcraft_update/Starcraft_Team_Project-starcraft_update/build/CMakeFiles/starcraft.dir/src/BattleField.c.obj"
-  "D:/CODEACADEMY/Code-Academy/Starcraft_Team_Project-starcraft_update/Starcraft_Team_Project-starcraft_update/src/ProtossAirship.c" "D:/CODEACADEMY/Code-Academy/Starcraft_Team_Project-starcraft_update/Starcraft_Team_Project-starcraft_update/build/CMakeFiles/starcraft.dir/src/ProtossAirship.c.obj"
-  "D:/CODEACADEMY/Code-Academy/Starcraft_Team_Project-starcraft_update/Starcraft_Team_Project-starcraft_update/src/TerranAirship.c" "D:/CODEACADEMY/Code-Academy/Starcraft_Team_Project-starcraft_update/Starcraft_Team_Project-starcraft_update/build/CMakeFiles/starcraft.dir/src/TerranAirship.c.obj"
-  "D:/CODEACADEMY/Code-Academy/Starcraft_Team_Project-starcraft_update/Starcraft_Team_Project-starcraft_update/src/Vector.c" "D:/CODEACADEMY/Code-Academy/Starcraft_Team_Project-starcraft_update/Starcraft_Team_Project-starcraft_update/build/CMakeFiles/starcraft.dir/src/Vector.c.obj"
-  "D:/CODEACADEMY/Code-Academy/Starcraft_Team_Project-starcraft_update/Starcraft_Team_Project-starcraft_update/src/main.c" "D:/CODEACADEMY/Code-Academy/Starcraft_Team_Project-starcraft_update/Starcraft_Team_Project-starcraft_update/build/CMakeFiles/starcraft.dir/src/main.c.obj"
-  )
-set(CMAKE_C_COMPILER_ID "GNU")
 
-# The include file search paths:
-set(CMAKE_C_TARGET_INCLUDE_PATH
-  "../include"
+# The set of dependency files which are needed:
+set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "C:/Users/HP/codeAcademy/Starcraft_Team_Project-master_UPDATE/Starcraft_Team_Project-starcraft_update/Starcraft_Team_Project-starcraft_update/src/BattleField.c" "CMakeFiles/starcraft.dir/src/BattleField.c.obj" "gcc" "CMakeFiles/starcraft.dir/src/BattleField.c.obj.d"
+  "C:/Users/HP/codeAcademy/Starcraft_Team_Project-master_UPDATE/Starcraft_Team_Project-starcraft_update/Starcraft_Team_Project-starcraft_update/src/ProtossAirship.c" "CMakeFiles/starcraft.dir/src/ProtossAirship.c.obj" "gcc" "CMakeFiles/starcraft.dir/src/ProtossAirship.c.obj.d"
+  "C:/Users/HP/codeAcademy/Starcraft_Team_Project-master_UPDATE/Starcraft_Team_Project-starcraft_update/Starcraft_Team_Project-starcraft_update/src/TerranAirship.c" "CMakeFiles/starcraft.dir/src/TerranAirship.c.obj" "gcc" "CMakeFiles/starcraft.dir/src/TerranAirship.c.obj.d"
+  "C:/Users/HP/codeAcademy/Starcraft_Team_Project-master_UPDATE/Starcraft_Team_Project-starcraft_update/Starcraft_Team_Project-starcraft_update/src/Vector.c" "CMakeFiles/starcraft.dir/src/Vector.c.obj" "gcc" "CMakeFiles/starcraft.dir/src/Vector.c.obj.d"
+  "C:/Users/HP/codeAcademy/Starcraft_Team_Project-master_UPDATE/Starcraft_Team_Project-starcraft_update/Starcraft_Team_Project-starcraft_update/src/main.c" "CMakeFiles/starcraft.dir/src/main.c.obj" "gcc" "CMakeFiles/starcraft.dir/src/main.c.obj.d"
   )
 
 # Targets to which this target links.
