@@ -67,7 +67,7 @@ bool ProtossAttack(TerranAirship** terranAirship, ProtossAirship* protossAirship
 
 void setProtossAttacks(ProtossAirship* protossAirship){
     if(protossAirship->type==PHOENIX){
-       protossAirship->attacks=1;
+       protossAirship->attacks=PHOENIX_ATTACKS;
    }
    else if(protossAirship->type==CARRIER && protossAirship->health==CARRIER_HEALTH){
        protossAirship->attacks=MAX_INTERCEPTORS;
