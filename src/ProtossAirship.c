@@ -47,18 +47,8 @@ void initCarrier(ProtossAirship* protossAirship){
 
 // Protoss Airship produce attack until Terran Airship is killed or strikes are finished
 bool ProtossAttack(TerranAirship** terranAirship, ProtossAirship* protossAirship,BattleField* battlefield,int atackerID, int* lastTerranID){
-    int attacks;
-   if(protossAirship->type==PHOENIX){
-       attacks=1;
-   }
-   else if(protossAirship->type==CARRIER && protossAirship->health==CARRIER_HEALTH){
-       attacks=MAX_INTERCEPTORS;
-       }
-    else if(protossAirship->type==CARRIER && protossAirship->health<CARRIER_HEALTH){
-        attacks=DAMAGED_STATUS_INTERCEPTORS;
-    }
-
-    for(int i=0;i<attacks;i++){
+    setProtossAttacks(protossAirship);
+    for(int i=0;i<protossAirship->attacks;i++){
             (*terranAirship)->health -= protossAirship->damage;
                 if( (*terranAirship)->health <= 0){
                      *lastTerranID = battlefield->terranFleet.size - 1;
@@ -71,9 +61,20 @@ bool ProtossAttack(TerranAirship** terranAirship, ProtossAirship* protossAirship
                     }
                 }     
         }
-
     *lastTerranID = battlefield->terranFleet.size - 1;
     return false;    
+}
+
+void setProtossAttacks(ProtossAirship* protossAirship){
+    if(protossAirship->type==PHOENIX){
+       protossAirship->attacks=1;
+   }
+   else if(protossAirship->type==CARRIER && protossAirship->health==CARRIER_HEALTH){
+       protossAirship->attacks=MAX_INTERCEPTORS;
+       }
+    else if(protossAirship->type==CARRIER && protossAirship->health<CARRIER_HEALTH){
+        protossAirship->attacks=DAMAGED_STATUS_INTERCEPTORS;
+    }
 }
 
 // One function updateShield for both Protos ships
@@ -95,6 +96,7 @@ void regenarateShield(ProtossAirship* protossAirship){
             }
     }
 }
+
 void printDeadTerran(ProtossAirship *protossAirship, int attackerID, int enemyID)
 {
   printf("%s with ID: %d killed enemy airship with ID: %d\n", protossAirship->name, attackerID, enemyID);

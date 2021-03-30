@@ -56,7 +56,6 @@ bool TerranAttack(ProtossAirship** protossAirship,BattleField * battleField,Terr
       *lastProtossID=battleField->protossFleet.size - 1;
       printDeadProtoss(terranAirship, attackerID, *lastProtossID);
       vectorPop(&battleField->protossFleet);
-     
       (*protossAirship) = (ProtossAirship *)vectorBack(&battleField->protossFleet);
       if (battleField->protossFleet.size == 0)
       {

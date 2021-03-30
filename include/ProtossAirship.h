@@ -8,3 +8,4 @@ bool ProtossAttack(TerranAirship** terranAirship, ProtossAirship* protossAirship
 void regenarateShield(ProtossAirship* protossAirship);
 void updateProtossAttacks(ProtossAirship* protossAirship);
 void printDeadTerran(ProtossAirship *protossAirship, int attackerID, int enemyID);
+void setProtossAttacks(ProtossAirship* protossAirship);
