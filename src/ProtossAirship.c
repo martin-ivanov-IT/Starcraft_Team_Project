@@ -99,3 +99,8 @@ void printDeadTerran(ProtossAirship *protossAirship, int attackerID, int enemyID
 {
   printf("%s with ID: %d killed enemy airship with ID: %d\n", protossAirship->name, attackerID, enemyID);
 }
+
+void printProtossAttack(int ID, TerranAirship *terranAirship)
+{
+  printf("Last Terran AirShip with ID: %d has %d health left\n", ID, terranAirship->health);
+}

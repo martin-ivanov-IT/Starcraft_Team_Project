@@ -20,10 +20,6 @@ void deinit(BattleField *battleField);
 
 bool processTerranTurn(BattleField *battleField);
 bool processProtossTurn(BattleField *battleField);
-void printProtossAttack(int ID, TerranAirship* terranAirship);
-void printTerranAttack(int ID, ProtossAirship* protossAirship);
-
-
 
 
 #endif /* BATTLEFIELD_H_ */

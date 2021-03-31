@@ -77,6 +77,12 @@ void produceDamage(ProtossAirship* protossAirship, short damage){
         protossAirship->health -= demageToHealth;
     }
 }
+
+void printTerranAttack(int ID, ProtossAirship *protossAirship)
+{
+  printf("Last Protoss AirShip with ID: %d has %d health and %d shield left\n", ID, protossAirship->health, protossAirship->shield);
+}
+
 void printDeadProtoss(TerranAirship *terranAirship, int attackerID, int enemyID)
 {
   printf("%s with ID: %d killed enemy airship with ID: %d\n", terranAirship->name, attackerID, enemyID);

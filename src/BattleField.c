@@ -96,18 +96,10 @@ bool processProtossTurn(BattleField *battleField)
       return true;
     }  
   }
- printProtossAttack(lastTerranID, lastOfTerran);
+  printProtossAttack(lastTerranID, lastOfTerran);
   return false;
 }
 
-void printProtossAttack(int ID, TerranAirship *terranAirship)
-{
-  printf("Last Terran AirShip with ID: %d has %d health left\n", ID, terranAirship->health);
-}
-void printTerranAttack(int ID, ProtossAirship *protossAirship)
-{
-  printf("Last Protoss AirShip with ID: %d has %d health and %d shield left\n", ID, protossAirship->health, protossAirship->shield);
-}
 // Free the memory allocated for the Airships, then free the memory allocated for the BattleFleeds
 void deinit(BattleField *battleField)
 {
