@@ -8,4 +8,5 @@ bool TerranAttack(ProtossAirship** protossAirship,BattleField * battleField,Terr
 void produceDamage(ProtossAirship* protossAirship, short damage);
 bool isDamagedTerran(TerranAirship* terranAirship);
 void printDeadProtoss(TerranAirship *terranAirship, int attackerID, int enemyID);
+void printTerranAttack(int ID, ProtossAirship *protossAirship);
 extern int turn;
