@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include "TerranAirship.h"
 #include "BattleField.h"
+
 // Check ship type according input string and initialize 
 void initTerranAirship(TerranAirship** terranAirship, char letter){
     (*terranAirship) = malloc(sizeof(TerranAirship));
@@ -38,9 +39,9 @@ void initBattleCruser(TerranAirship* battleCruser){
     battleCruser->damage = (short)BATTLE_BRUSER_DAMAGE;
     battleCruser->name = "BattleCruser";
 }
-// calculate damage variable according to ships involved and the turn number and produce attack
+// returns true when ProtossFleet has no ships left, else return false
 bool TerranAttack(ProtossAirship** protossAirship,BattleField * battleField,TerranAirship* terranAirship,int *lastProtossID,int attackerID){
-    
+    // calculate damage variable according to ships involved and the turn number 
     short damage = terranAirship->damage;
     if((*protossAirship)->type == PHOENIX && terranAirship->type == VIKING){
         damage = VIKING_DOUBLE_DAMAGE;
@@ -49,19 +50,22 @@ bool TerranAttack(ProtossAirship** protossAirship,BattleField * battleField,Terr
     if(terranAirship->type == BATTLE_CRUSER && !(turn%=YAMATO_CANNON_LOADING_TURNS)){
         damage = BATTLE_BRUSER_POWER_DAMAGE;
     }
-
+    // decrease enemy shield and/or health values according to damage
     produceDamage((*protossAirship), damage);
+    // If Protoss ship is killed, update last enemy ship ID, prints info who killed who, removes (free the memory) the killed ship and takes the last ship again
     if ((*protossAirship)->health <= 0)
     {
       *lastProtossID=battleField->protossFleet.size - 1;
       printDeadProtoss(terranAirship, attackerID, *lastProtossID);
       vectorPop(&battleField->protossFleet);
       (*protossAirship) = (ProtossAirship *)vectorBack(&battleField->protossFleet);
+      // returns true when ProtossFleet has no ships left
       if (battleField->protossFleet.size == 0)
       {
         return true;
       }
     }
+    // update last enemy ship ID
     *lastProtossID=battleField->protossFleet.size - 1;
     return false;
 }
