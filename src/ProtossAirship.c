@@ -66,23 +66,12 @@ bool ProtossAttack(TerranAirship** terranAirship, ProtossAirship* protossAirship
 }
 
 // Calculate number of strikes of the current attacking Protoss Airship
-<<<<<<< Updated upstream
 void setProtossAttacks(ProtossAirship* protossAirship){
     if(protossAirship->type==CARRIER && protossAirship->health==CARRIER_HEALTH){
        protossAirship->attacks=MAX_INTERCEPTORS;
        }
     else if(protossAirship->type==CARRIER && protossAirship->health<CARRIER_HEALTH){
         protossAirship->attacks=DAMAGED_STATUS_INTERCEPTORS;
-=======
-void updateProtossAttacks(ProtossAirship* protossAirship){
-    if(protossAirship->type == CARRIER){
-        if(protossAirship->health == CARRIER_HEALTH){
-            protossAirship->attacks = MAX_INTERCEPTORS;
-        }
-        else if(protossAirship->health < CARRIER_HEALTH){
-            protossAirship->attacks = DAMAGED_STATUS_INTERCEPTORS;
-        }
->>>>>>> Stashed changes
     }
 }
 
