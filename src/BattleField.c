@@ -60,11 +60,12 @@ void startBattle(BattleField *battleField)
 bool processTerranTurn(BattleField *battleField)
 {
   turn++;
-  ProtossAirship *lastOfProtoss=lastOfProtoss = (ProtossAirship *)vectorBack(&battleField->protossFleet);
-  int terranSize = battleField->terranFleet.size;
   // Takes last enemy ship
+  ProtossAirship *lastOfProtoss=lastOfProtoss = (ProtossAirship *)vectorBack(&battleField->protossFleet);
  
   int lastProtossID=0;
+  
+  int terranSize = battleField->terranFleet.size;
   // Terran Airships attack one by one
   for (int i = 0; i < terranSize; i++)
   {
@@ -74,6 +75,7 @@ bool processTerranTurn(BattleField *battleField)
     }
     
   }
+  // info after all ships have attacked
   printTerranAttack(lastProtossID, lastOfProtoss);
   regenarateShield(lastOfProtoss);
   return false;
@@ -82,12 +84,11 @@ bool processTerranTurn(BattleField *battleField)
 // returns true when TerranFleet has no ships left, else prints turn info and returns false
 bool processProtossTurn(BattleField *battleField)
 {
-  int protossSize = battleField->protossFleet.size;
-
   // Takes last enemy ship
   TerranAirship *lastOfTerran = lastOfTerran = (TerranAirship *)vectorBack(&battleField->terranFleet);
   int lastTerranID = 0;
   
+  int protossSize = battleField->protossFleet.size;
   // Protoss Airships attack one by one
   for (int i = 0; i < protossSize; i++)
   {  
