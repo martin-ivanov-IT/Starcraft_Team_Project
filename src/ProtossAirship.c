@@ -5,6 +5,7 @@
 #include"ProtossAirship.h"
 #include "Vector.h"
 #include "BattleField.h"
+
 // Check ship type according input string and initialize Protoss Airship
 void initProtossAirship(ProtossAirship** protossAirship, char letter){
     (*protossAirship) = malloc(sizeof(ProtossAirship));
@@ -45,22 +46,26 @@ void initCarrier(ProtossAirship* protossAirship){
     protossAirship->name = "Carrier";
 }
 
-// Protoss Airship produce attack until Terran Airship is killed or strikes are finished
+
+// returns true when ProtossFleet has no ships left, else return false
 bool ProtossAttack(TerranAirship** terranAirship, ProtossAirship* protossAirship,BattleField* battlefield,int atackerID, int* lastTerranID){
     setProtossAttacks(protossAirship);
+    // Protoss Airship produce attack until strikes are finished
     for(int i=0;i<protossAirship->attacks;i++){
         (*terranAirship)->health -= protossAirship->damage;
+        // If Terran ship is killed, updates the last Terran ship ID, prints info who killed who, removes (free the memory) the killed ship and takes the last ship again
         if( (*terranAirship)->health <= 0){
             *lastTerranID = battlefield->terranFleet.size - 1;
-            // If Terran ship is killed, prints ships info, removes (free the memory) the killed ship and takes the last ship again
             printDeadTerran(protossAirship,atackerID,*lastTerranID);
             vectorPop(&battlefield->terranFleet);
             (*terranAirship)=(TerranAirship*)vectorBack(&battlefield->terranFleet);
+            // returns true when ProtossFleet has no ships left
             if(battlefield->terranFleet.size == 0 ){
             return true;                
             }              
         }     
     }
+    //updates the last Terran ship ID
     *lastTerranID = battlefield->terranFleet.size - 1;
     return false;    
 }
