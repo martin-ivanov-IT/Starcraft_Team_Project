@@ -11,7 +11,7 @@ typedef struct {
 }ProtossAirship;
 
 void initProtossAirship(ProtossAirship* protossAirship, const char *inputName, int inputHealth, int inputDamage,
-                 int shield, int shieldRegenerateRate, enum AirShipType airShipType);
+                 int shield, int shieldRegenerateRate, enum AirShipType airShipType, int index);
 
 void takeDamageProtoss(ProtossAirship* protossAirship, int damage);
 void protossRegenerate(ProtossAirship* protossAirship);

@@ -17,4 +17,7 @@ CMakeFiles/starcraft.dir/src/Viking.c.obj: \
  H:/AirShips/New\ folder/Starcraft_Team_Project-master/include/Airship.h \
  H:/AirShips/New\ folder/Starcraft_Team_Project-master/include/Viking.h \
  H:/AirShips/New\ folder/Starcraft_Team_Project-master/include/TerranAirship.h \
- H:/AirShips/New\ folder/Starcraft_Team_Project-master/include/Defines.h
+ H:/AirShips/New\ folder/Starcraft_Team_Project-master/include/ProtossAirship.h \
+ H:/AirShips/New\ folder/Starcraft_Team_Project-master/include/Defines.h \
+ H:/AirShips/New\ folder/Starcraft_Team_Project-master/include/Vector.h \
+ H:/AirShips/New\ folder/Starcraft_Team_Project-master/include/ProtossAirship.h

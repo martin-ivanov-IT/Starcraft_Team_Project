@@ -2,8 +2,8 @@
 #include"../include/Airship.h"
 #include"../include/Defines.h"
 void initProtossAirship(ProtossAirship* protossAirship, const char *inputName, int inputHealth, int inputDamage,
-                 int shield, int shieldRegenerateRate, enum AirShipType airShipType){
-                     initAirship(&protossAirship->airship, airShipType, inputName, inputHealth, inputDamage);
+                 int shield, int shieldRegenerateRate, enum AirShipType airShipType, int index){
+                     initAirship(&protossAirship->airship, airShipType, inputName, inputHealth, inputDamage, index);
                      protossAirship->shield = shield;
                      protossAirship->shieldRegenerateRate = shieldRegenerateRate;
                  }

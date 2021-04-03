@@ -5,6 +5,6 @@
 #include "Airship.h"
 
 typedef Airship TerranAirship;
-void initTerranAirship(TerranAirship* terranAirship, enum AirShipType airShipType, const char *inputName, int inputHealth, int inputDamage);
+void initTerranAirship(TerranAirship* terranAirship, enum AirShipType airShipType, const char *inputName, int inputHealth, int inputDamage, int index);
 
 #endif

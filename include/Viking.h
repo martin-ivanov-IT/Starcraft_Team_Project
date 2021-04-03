@@ -4,8 +4,11 @@
 #include "Defines.h"
 #include "Airship.h"
 #include "TerranAirship.h"
+#include"ProtossAirship.h"
+
 
 typedef TerranAirship Viking;
-void initViking(Viking* viking,  enum AirShipType airShipType, const char *inputName, int inputHealth, int inputDamage);
+void initViking(Viking* viking,  enum AirShipType airShipType, const char *inputName, int inputHealth, int inputDamage, int index);
 int produceDamageViking(enum AirShipType enemyAirShipType);
+void vikinngDealDamageToProtossAirship(Vector* protossFleet, ProtossAirship** lastOfProtoss, Viking* viking);
 #endif

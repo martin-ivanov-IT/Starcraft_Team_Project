@@ -22,8 +22,8 @@ void deinit(BattleField *battleField);
 
 bool processTerranTurn(BattleField *battleField, int turn);
 bool processProtossTurn(BattleField *battleField);
-void printTerranHurt(int ID, TerranAirship *terranAirship);
-void printProtossHurt(int ID, ProtossAirship *protossAirship);
+void printTerranHurt(TerranAirship *terranAirship);
+void printProtossHurt(ProtossAirship *protossAirship);
 void printKilledTerranByProtoss(ProtossAirship *protossAirship, int attackerID, int enemyID);
 void printKilledProtossByTerran(TerranAirship *terranAirship, int attackerID, int enemyID);
 

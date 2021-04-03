@@ -16,21 +16,21 @@
 void generateTerranFleet(BattleField *battleField, const char *terranFleetStr)
 {
   vectorInit(&battleField->terranFleet, strlen(terranFleetStr));
-  int i = 0;
-  while (terranFleetStr[i] != '\0')
+  int index = 0;
+  while (terranFleetStr[index] != '\0')
   {
-    if(terranFleetStr[i] == 'v'){
+    if(terranFleetStr[index] == 'v'){
       Viking* viking = malloc(sizeof(Viking));
-      initViking(viking, VIKING, VIKING_NAME, VIKING_HEALTH, VIKING_DAMAGE);
+      initViking(viking, VIKING, VIKING_NAME, VIKING_HEALTH, VIKING_DAMAGE, index);
       vectorPush(&battleField->terranFleet, viking);
     }
-    else if(terranFleetStr[i] == 'b'){
+    else if(terranFleetStr[index] == 'b'){
       BattleCruiser* battleCruiser = malloc(sizeof(BattleCruiser));
-      initBattleCruiser(battleCruiser, BATTLE_CRUSER, BATTLE_CRUSER_NAME, BATTLE_CRUSER_HEALTH, BATTLE_BRUSER_DAMAGE);
+      initBattleCruiser(battleCruiser, BATTLE_CRUSER, BATTLE_CRUSER_NAME, BATTLE_CRUSER_HEALTH, BATTLE_BRUSER_DAMAGE, index);
       vectorPush(&battleField->terranFleet, battleCruiser);
     }
     
-    i++;
+    index++;
   }
 }
 
@@ -38,23 +38,23 @@ void generateTerranFleet(BattleField *battleField, const char *terranFleetStr)
 void generateProtossFleet(BattleField *battleField, const char *protossFleetStr)
 {
   vectorInit(&battleField->protossFleet, strlen(protossFleetStr));
-  int i = 0;
-  while (protossFleetStr[i] != '\0')
+  int index = 0;
+  while (protossFleetStr[index] != '\0')
   {
-    if(protossFleetStr[i] == 'p'){
+    if(protossFleetStr[index] == 'p'){
       Phoenix* phoenix = malloc(sizeof(Phoenix));
       initPhoenix(phoenix, PHOENIX_NAME, PHOENIX_HEALTH, PHOENIX_DAMAGE, PHOENIX_SHIELD,
-                  PHOENIX_SHIELD_REGENERATE_RATE, PHOENIX);
+                  PHOENIX_SHIELD_REGENERATE_RATE, PHOENIX, index);
       vectorPush(&battleField->protossFleet, phoenix);
     }
 
-    else if(protossFleetStr[i] == 'c'){
+    else if(protossFleetStr[index] == 'c'){
       Carrier* carrier = malloc(sizeof(Carrier));
       initCarrier(carrier, CARRIER_NAME, CARRIER_HEALTH, CARRIER_DAMAGE, CARRIER_SHIELD,
-                  CARRIER_SHIELD_REGENERATE_RATE, CARRIER);
+                  CARRIER_SHIELD_REGENERATE_RATE, CARRIER, index);
       vectorPush(&battleField->protossFleet, carrier);
     }
-    i++;
+    index++;
   }
 }
 // Count attack turns and check which Battelfield Fleed has remaining ships
@@ -83,36 +83,22 @@ void startBattle(BattleField *battleField)
 bool processTerranTurn(BattleField *battleField, int turn)
 {
   int terranSize = battleField->terranFleet.size;
-  // Takes last enemy ship
   ProtossAirship *lastOfProtoss = (ProtossAirship *)vectorBack(&battleField->protossFleet);
-  int lastProtossID;
   // Terran Airships attack one by one
   for (int i = 0; i < terranSize; i++)
   {
-    lastProtossID = battleField->protossFleet.size - 1;
-    TerranAirship *terranAirship = (TerranAirship *)vectorGet(&battleField->terranFleet, i);
-    int damage = 0;
+    TerranAirship* terranAirship = (TerranAirship *)vectorGet(&battleField->terranFleet, i);
     if(terranAirship->type == VIKING){
-      damage = produceDamageViking(lastOfProtoss->airship.type);
+      vikinngDealDamageToProtossAirship(&battleField->protossFleet, &lastOfProtoss, terranAirship);
     }
     else if(terranAirship->type == BATTLE_CRUSER){
-      damage = produceDamageBattleCruiser(turn);
+      battleCruiserDealDamageToProtossAirship(&battleField->protossFleet, &lastOfProtoss,turn, terranAirship);
     }
-    takeDamageProtoss(lastOfProtoss, damage);
-    // If Protoss ship is killed, prints ships info, removes (free the memory) the killed ship and takes the last ship again
-    if (lastOfProtoss->airship.health <= 0)
-    {
-      printKilledProtossByTerran(terranAirship, i, lastProtossID);
-      vectorPop(&battleField->protossFleet);
-      if (battleField->protossFleet.size == 0)
-      {
-        return true;
-      }
-      lastProtossID = battleField->protossFleet.size - 1;
-      lastOfProtoss = (ProtossAirship *)vectorBack(&battleField->protossFleet);
+    if(battleField->protossFleet.size == 0){
+      return true;
     }
   }
-  printProtossHurt(lastProtossID, lastOfProtoss);
+  printProtossHurt(lastOfProtoss);
   return false;
 }
 
@@ -121,68 +107,32 @@ bool processProtossTurn(BattleField *battleField)
 {
   protossRegenerate((ProtossAirship *)vectorBack(&battleField->protossFleet));
   int protossSize = battleField->protossFleet.size;
-  // Takes last enemy ship
   TerranAirship *lastOfTerran = (TerranAirship *)vectorBack(&battleField->terranFleet);
-  int lastTerranID;
-  // Protoss Airships attack one by one
   for (int i = 0; i < protossSize; i++)
   {
-    lastTerranID = battleField->terranFleet.size - 1;
-    ProtossAirship *protossAirship = (ProtossAirship *)vectorGet(&battleField->protossFleet, i);
-    int damage = 0;
+    ProtossAirship* protossAirship = (ProtossAirship *)vectorGet(&battleField->protossFleet, i);
     if(protossAirship->airship.type == PHOENIX){
-      damage = baseProduceDamage(&protossAirship->airship);
-      baseTakeDamage(lastOfTerran, damage);
-      damage = 0;
+      phoenixDealDamageToTerranAirship(&battleField->terranFleet, &lastOfTerran, protossAirship);
     }
     else if(protossAirship->airship.type == CARRIER){
-      damage = carrierProduceDamage(protossAirship);
-      int currentTerranHealth = lastOfTerran->health;
-      baseTakeDamage(lastOfTerran, damage);
-      damage -= currentTerranHealth;
-    }
-
-    // If Terran ship is killed, prints ships info, removes (free the memory) the killed ship and takes the last ship again
-    if (lastOfTerran->health <= 0)
-    {
-      printKilledTerranByProtoss(protossAirship, i, lastTerranID);
-      vectorPop(&battleField->terranFleet);
-      lastOfTerran = (TerranAirship *)vectorBack(&battleField->terranFleet);
-      if (battleField->terranFleet.size == 0)
-      {
-        return true;
-      }
-      // if attacking ship has stikes left continue attack (only one ship can be killed with max strykes, because the new last ship will be with max health)
-      if (damage > 0)
-      {
-        damage = (damage/8)*8;
-        baseTakeDamage(lastOfTerran, damage);
-      }
-      lastTerranID = battleField->terranFleet.size - 1;
+      carrierDealDamageToTerranAirship(&battleField->terranFleet, protossAirship, &lastOfTerran);
+    } 
+    if(battleField->terranFleet.size == 0){
+      return true;
     }
   }
-  printTerranHurt(lastTerranID, lastOfTerran); // after all Protoss Airships have stiked
+  printTerranHurt(lastOfTerran); // after all Protoss Airships have stiked
   return false;
 }
 
-void printKilledTerranByProtoss(ProtossAirship *protossAirship, int attackerID, int enemyID)
+void printTerranHurt(TerranAirship *terranAirship)
 {
-  printf("%s with ID: %d killed enemy airship with ID: %d\n",protossAirship->airship.name, attackerID, enemyID);
+  printf("Last Terran AirShip with ID: %d has %d health left\n", terranAirship->ID, terranAirship->health);
 }
 
-void printKilledProtossByTerran(TerranAirship *terranAirship, int attackerID, int enemyID)
+void printProtossHurt(ProtossAirship *protossAirship)
 {
-  printf("%s with ID: %d killed enemy airship with ID: %d\n", terranAirship->name, attackerID, enemyID);
-}
-
-void printTerranHurt(int ID, TerranAirship *terranAirship)
-{
-  printf("Last Terran AirShip with ID: %d has %d health left\n", ID, terranAirship->health);
-}
-
-void printProtossHurt(int ID, ProtossAirship *protossAirship)
-{
-  printf("Last Protoss AirShip with ID: %d has %d health and %d shield left\n", ID, protossAirship->airship.health, protossAirship->shield);
+  printf("Last Protoss AirShip with ID: %d has %d health and %d shield left\n", protossAirship->airship.ID, protossAirship->airship.health, protossAirship->shield);
 }
 
 // Free the memory allocated for the Airships, then free the memory allocated for the BattleFleeds
