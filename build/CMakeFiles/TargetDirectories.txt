@@ -1,0 +1,3 @@
+H:/AirShips/New folder/Starcraft_Team_Project-master/build/CMakeFiles/rebuild_cache.dir
+H:/AirShips/New folder/Starcraft_Team_Project-master/build/CMakeFiles/starcraft.dir
+H:/AirShips/New folder/Starcraft_Team_Project-master/build/CMakeFiles/edit_cache.dir
