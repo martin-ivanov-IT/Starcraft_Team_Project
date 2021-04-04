@@ -18,13 +18,17 @@ void baseTakeDamage(Airship* airship, int damage){
     airship->health -= damage;
     
 }
-// void baseDealDamage(Airship* airship,int damage, int atackerID){
-//     baseTakeDamage(airship, damage);
-//     if(!isAirshipAlive(airship)){
-//         printDead(airship, atackerID);
-//     }  
-// }
-
+void baseDealDamage(Airship** lastAirship, Vector* army, int damage, char* atackerName,int atackerID){
+    baseTakeDamage((*lastAirship), damage);
+    if(!isAirshipAlive((*lastAirship))){
+        printDead(atackerName,atackerID, (*lastAirship)->ID);
+        vectorPop(army);
+        if(army->size == 0){
+            return;
+        }
+        (*lastAirship) = (Airship*)vectorBack(army);
+    }
+}
 bool isAirshipAlive(Airship* airship){
     if(airship->health <= 0){
         return false;
@@ -32,9 +36,9 @@ bool isAirshipAlive(Airship* airship){
     return true;
 }
 
-void printDead(Airship* airship, int enemyID)
+void printDead(char* atackerName,int atackerID, int enemyID)
 {
-  printf("%s with ID: %d killed enemy airship with ID: %d\n",airship->name, airship->ID, enemyID);
+  printf("%s with ID: %d killed enemy airship with ID: %d\n",atackerName, atackerID, enemyID);
 }
 
 

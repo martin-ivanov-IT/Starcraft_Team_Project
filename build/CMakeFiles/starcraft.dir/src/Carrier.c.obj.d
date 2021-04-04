@@ -17,5 +17,6 @@ CMakeFiles/starcraft.dir/src/Carrier.c.obj: \
  H:/AirShips/New\ folder/Starcraft_Team_Project-master/include/Carrier.h \
  H:/AirShips/New\ folder/Starcraft_Team_Project-master/include/ProtossAirship.h \
  H:/AirShips/New\ folder/Starcraft_Team_Project-master/include/TerranAirship.h \
+ H:/AirShips/New\ folder/Starcraft_Team_Project-master/include/Carrier.h \
  H:/AirShips/New\ folder/Starcraft_Team_Project-master/include/Airship.h \
  H:/AirShips/New\ folder/Starcraft_Team_Project-master/include/Defines.h

@@ -3,8 +3,10 @@
 
 #include "Defines.h"
 #include "Airship.h"
+#include "Carrier.h"
 
 typedef Airship TerranAirship;
 void initTerranAirship(TerranAirship* terranAirship, enum AirShipType airShipType, const char *inputName, int inputHealth, int inputDamage, int index);
+void terranDealDamageByCarrier(TerranAirship** lastOfTerran, Vector* terranFleet, int damage, char* atackerName, int atackerID);
 
 #endif

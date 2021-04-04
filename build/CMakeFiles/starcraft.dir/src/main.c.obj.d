@@ -27,4 +27,5 @@ CMakeFiles/starcraft.dir/src/main.c.obj: \
  C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include/stdbool.h \
  H:/AirShips/New\ folder/Starcraft_Team_Project-master/include/TerranAirship.h \
  H:/AirShips/New\ folder/Starcraft_Team_Project-master/include/Airship.h \
+ H:/AirShips/New\ folder/Starcraft_Team_Project-master/include/Carrier.h \
  H:/AirShips/New\ folder/Starcraft_Team_Project-master/include/ProtossAirship.h

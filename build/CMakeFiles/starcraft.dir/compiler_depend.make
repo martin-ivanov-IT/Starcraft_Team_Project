@@ -76,6 +76,7 @@ CMakeFiles/starcraft.dir/src/BattleField.c.obj: ../src/BattleField.c \
   C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include/stdbool.h \
   ../include/TerranAirship.h \
   ../include/Airship.h \
+  ../include/Carrier.h \
   ../include/ProtossAirship.h \
   ../include/ProtossAirship.h \
   ../include/TerranAirship.h \
@@ -104,6 +105,7 @@ CMakeFiles/starcraft.dir/src/Carrier.c.obj: ../src/Carrier.c \
   ../include/Carrier.h \
   ../include/ProtossAirship.h \
   ../include/TerranAirship.h \
+  ../include/Carrier.h \
   ../include/Airship.h \
   ../include/Defines.h
 
@@ -125,6 +127,7 @@ CMakeFiles/starcraft.dir/src/Phoenix.c.obj: ../src/Phoenix.c \
   ../include/Phoenix.h \
   ../include/ProtossAirship.h \
   ../include/TerranAirship.h \
+  ../include/Carrier.h \
   ../include/Airship.h \
   ../include/Defines.h \
   ../include/TerranAirship.h
@@ -145,7 +148,8 @@ CMakeFiles/starcraft.dir/src/ProtossAirship.c.obj: ../src/ProtossAirship.c \
   C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include/stdbool.h \
   ../include/Airship.h \
   ../include/Airship.h \
-  ../include/Defines.h
+  ../include/Defines.h \
+  ../include/Vector.h
 
 CMakeFiles/starcraft.dir/src/TerranAirship.c.obj: ../src/TerranAirship.c \
   ../include/TerranAirship.h \
@@ -162,7 +166,11 @@ CMakeFiles/starcraft.dir/src/TerranAirship.c.obj: ../src/TerranAirship.c \
   C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/sdks/_mingw_ddk.h \
   C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include/stdbool.h \
   ../include/Airship.h \
+  ../include/Carrier.h \
+  ../include/ProtossAirship.h \
+  ../include/TerranAirship.h \
   ../include/Airship.h \
+  ../include/Carrier.h \
   ../include/Defines.h
 
 CMakeFiles/starcraft.dir/src/Vector.c.obj: ../src/Vector.c \
@@ -199,10 +207,11 @@ CMakeFiles/starcraft.dir/src/Viking.c.obj: ../src/Viking.c \
   C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/sdks/_mingw_ddk.h \
   C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include/stdbool.h \
   ../include/Airship.h \
+  ../include/Carrier.h \
+  ../include/ProtossAirship.h \
+  ../include/TerranAirship.h \
   ../include/Airship.h \
   ../include/Viking.h \
-  ../include/TerranAirship.h \
-  ../include/ProtossAirship.h \
   ../include/Defines.h \
   ../include/Vector.h \
   ../include/ProtossAirship.h
@@ -235,6 +244,7 @@ CMakeFiles/starcraft.dir/src/main.c.obj: ../src/main.c \
   C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include/stdbool.h \
   ../include/TerranAirship.h \
   ../include/Airship.h \
+  ../include/Carrier.h \
   ../include/ProtossAirship.h
 
 

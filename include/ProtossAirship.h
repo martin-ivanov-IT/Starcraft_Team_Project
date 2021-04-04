@@ -3,6 +3,7 @@
 
 #include "Defines.h"
 #include "Airship.h"
+#include "Vector.h"
 
 typedef struct {
   Airship airship;
@@ -15,4 +16,5 @@ void initProtossAirship(ProtossAirship* protossAirship, const char *inputName, i
 
 void takeDamageProtoss(ProtossAirship* protossAirship, int damage);
 void protossRegenerate(ProtossAirship* protossAirship);
+void protossDealDamage(ProtossAirship** lastOfProtoss, Vector* protossFleet, int damage, char* atackerName, int atackerID);
 #endif

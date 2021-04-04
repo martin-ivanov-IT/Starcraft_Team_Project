@@ -5,10 +5,6 @@
 #include "Airship.h"
 #include "ProtossAirship.h"
 #include"TerranAirship.h"
-typedef struct {
-  int count;
-  int damage;
-}Interceptors;
 
 typedef ProtossAirship Carrier;
  
@@ -16,6 +12,4 @@ void initCarrier(Carrier* carrier, const char *inputName, int inputHealth, int i
             int inputShield, int inputShieldRegenerateRate, enum AirShipType airShipType, int index);
 
 int carrierProduceDamage(Carrier* carrier);
-void carrierDealDamageToTerranAirship(Vector* terranFleet, Carrier* carrier, TerranAirship** lastOfTerran);
-
 #endif

@@ -10,16 +10,3 @@ void initPhoenix(Phoenix* phoenix, const char *inputName, int inputHealth, int i
 
     initProtossAirship(phoenix, inputName, inputHealth, inputDamage, inputShield, inputShieldRegenerateRate, airShipType, index);
 }
-
-void phoenixDealDamageToTerranAirship(Vector* terranFleet,TerranAirship** lastOfTerran, Phoenix* phoenix){
-    int damage = PHOENIX_DAMAGE;
-    baseTakeDamage((*lastOfTerran), damage);
-    if(!isAirshipAlive((*lastOfTerran))){
-        printDead(&phoenix->airship, (*lastOfTerran)->ID);
-        vectorPop(terranFleet);
-        if(terranFleet->size == 0){
-            return;
-        }
-        (*lastOfTerran) = (TerranAirship*)vectorBack(terranFleet);
-    }
-}

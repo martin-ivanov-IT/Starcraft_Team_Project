@@ -18,23 +18,4 @@ int carrierProduceDamage(Carrier* carrier){
     }
     return damage;
 }
-void carrierDealDamageToTerranAirship(Vector* terranFleet, Carrier* carrier, TerranAirship** lastOfTerran){
-    int damage = carrierProduceDamage(carrier);
-    while (damage > 0)
-    {
-        int currentTerranHealth = (*lastOfTerran)->health;
-        baseTakeDamage((*lastOfTerran), damage);
-        damage -= currentTerranHealth;
-        if(!isAirshipAlive((*lastOfTerran))){
-        printDead(&carrier->airship, (*lastOfTerran)->ID);
-        vectorPop(terranFleet);
-        if(terranFleet->size == 0){
-            break;
-        }
-        (*lastOfTerran) = (TerranAirship*)vectorBack(terranFleet);
-        if(damage > 0){
-            damage = damage/8 * 8;
-        }
-     }
-    }
-}
+

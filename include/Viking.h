@@ -9,6 +9,6 @@
 
 typedef TerranAirship Viking;
 void initViking(Viking* viking,  enum AirShipType airShipType, const char *inputName, int inputHealth, int inputDamage, int index);
-int produceDamageViking(enum AirShipType enemyAirShipType);
+int vikingProduceDamage(enum AirShipType enemyAirShipType);
 void vikinngDealDamageToProtossAirship(Vector* protossFleet, ProtossAirship** lastOfProtoss, Viking* viking);
 #endif

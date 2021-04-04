@@ -85,15 +85,18 @@ bool processTerranTurn(BattleField *battleField, int turn)
   int terranSize = battleField->terranFleet.size;
   ProtossAirship *lastOfProtoss = (ProtossAirship *)vectorBack(&battleField->protossFleet);
   // Terran Airships attack one by one
+  int damage = 0;
   for (int i = 0; i < terranSize; i++)
   {
     TerranAirship* terranAirship = (TerranAirship *)vectorGet(&battleField->terranFleet, i);
     if(terranAirship->type == VIKING){
-      vikinngDealDamageToProtossAirship(&battleField->protossFleet, &lastOfProtoss, terranAirship);
+      damage = vikingProduceDamage(lastOfProtoss->airship.type);
     }
     else if(terranAirship->type == BATTLE_CRUSER){
-      battleCruiserDealDamageToProtossAirship(&battleField->protossFleet, &lastOfProtoss,turn, terranAirship);
+      damage = battleCruiseProduceDamage(turn);
     }
+    protossDealDamage(&lastOfProtoss, &battleField->protossFleet,damage, terranAirship->name, terranAirship->ID);
+
     if(battleField->protossFleet.size == 0){
       return true;
     }
@@ -111,11 +114,15 @@ bool processProtossTurn(BattleField *battleField)
   for (int i = 0; i < protossSize; i++)
   {
     ProtossAirship* protossAirship = (ProtossAirship *)vectorGet(&battleField->protossFleet, i);
+    int damage = 0;
     if(protossAirship->airship.type == PHOENIX){
-      phoenixDealDamageToTerranAirship(&battleField->terranFleet, &lastOfTerran, protossAirship);
+      damage = baseProduceDamage(&protossAirship->airship);
+      baseDealDamage(&lastOfTerran, &battleField->terranFleet, damage, protossAirship->airship.name, protossAirship->airship.ID);
     }
     else if(protossAirship->airship.type == CARRIER){
-      carrierDealDamageToTerranAirship(&battleField->terranFleet, protossAirship, &lastOfTerran);
+      damage = carrierProduceDamage(protossAirship);
+      terranDealDamageByCarrier(&lastOfTerran, &battleField->terranFleet, damage,
+       protossAirship->airship.name, protossAirship->airship.ID);
     } 
     if(battleField->terranFleet.size == 0){
       return true;
