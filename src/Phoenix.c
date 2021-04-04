@@ -10,3 +10,10 @@ void initPhoenix(Phoenix* phoenix, const char *inputName, int inputHealth, int i
 
     initProtossAirship(phoenix, inputName, inputHealth, inputDamage, inputShield, inputShieldRegenerateRate, airShipType, index);
 }
+
+void phoenixRegenerate(ProtossAirship* protossAirship){
+    protossAirship->shield += protossAirship->shieldRegenerateRate;
+    if(protossAirship->shield > PHOENIX_SHIELD){
+            protossAirship->shield = PHOENIX_SHIELD;
+    }
+}

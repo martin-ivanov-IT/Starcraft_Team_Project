@@ -18,6 +18,8 @@ void baseTakeDamage(Airship* airship, int damage){
     airship->health -= damage;
     
 }
+
+//reduce health and remove airhip if is dead after attack
 void baseDealDamage(Airship** lastAirship, Vector* army, int damage, char* atackerName,int atackerID){
     baseTakeDamage((*lastAirship), damage);
     if(!isAirshipAlive((*lastAirship))){
@@ -29,6 +31,7 @@ void baseDealDamage(Airship** lastAirship, Vector* army, int damage, char* atack
         (*lastAirship) = (Airship*)vectorBack(army);
     }
 }
+// check if airship health is under 0 and return true if is above 0
 bool isAirshipAlive(Airship* airship){
     if(airship->health <= 0){
         return false;

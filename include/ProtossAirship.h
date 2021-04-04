@@ -15,6 +15,5 @@ void initProtossAirship(ProtossAirship* protossAirship, const char *inputName, i
                  int shield, int shieldRegenerateRate, enum AirShipType airShipType, int index);
 
 void takeDamageProtoss(ProtossAirship* protossAirship, int damage);
-void protossRegenerate(ProtossAirship* protossAirship);
 void protossDealDamage(ProtossAirship** lastOfProtoss, Vector* protossFleet, int damage, char* atackerName, int atackerID);
 #endif

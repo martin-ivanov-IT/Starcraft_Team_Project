@@ -8,20 +8,7 @@ void initProtossAirship(ProtossAirship* protossAirship, const char *inputName, i
                      protossAirship->shield = shield;
                      protossAirship->shieldRegenerateRate = shieldRegenerateRate;
                  }
-void protossRegenerate(ProtossAirship* protossAirship){
-    protossAirship->shield += protossAirship->shieldRegenerateRate;
-    if(protossAirship->airship.type == PHOENIX){
-        if(protossAirship->shield > PHOENIX_SHIELD){
-            protossAirship->shield = PHOENIX_SHIELD;
-        }
-    }
-    else if(protossAirship->airship.type == CARRIER){
-        if(protossAirship->shield > CARRIER_SHIELD){
-            protossAirship->shield = CARRIER_SHIELD;
-        }
-    }
-}
-
+                 
 void takeDamageProtoss(ProtossAirship* protossAirship, int damage){
    if(protossAirship->shield >= damage){
        protossAirship->shield -= damage;

@@ -12,4 +12,5 @@ void initCarrier(Carrier* carrier, const char *inputName, int inputHealth, int i
             int inputShield, int inputShieldRegenerateRate, enum AirShipType airShipType, int index);
 
 int getCarrierAtacks(Carrier* carrier);
+void carrierRegenerate(ProtossAirship* protossAirship);
 #endif

@@ -90,11 +90,13 @@ bool processTerranTurn(BattleField *battleField, int turn)
   {
     TerranAirship* terranAirship = (TerranAirship *)vectorGet(&battleField->terranFleet, i);
     if(terranAirship->type == VIKING){
+      // take damage done by atack airship and return value as int
       damage = vikingProduceDamage(lastOfProtoss->airship.type);
     }
     else if(terranAirship->type == BATTLE_CRUSER){
       damage = battleCruiseProduceDamage(turn);
     }
+    // reduce health and sheild of enemy airship and remove if dead
     protossDealDamage(&lastOfProtoss, &battleField->protossFleet,damage, terranAirship->name, terranAirship->ID);
 
     if(battleField->protossFleet.size == 0){
@@ -108,7 +110,6 @@ bool processTerranTurn(BattleField *battleField, int turn)
 // returns true when TerranFleet has no ships left, else prints turn info and returns false
 bool processProtossTurn(BattleField *battleField)
 {
-  protossRegenerate((ProtossAirship *)vectorBack(&battleField->protossFleet));
   int protossSize = battleField->protossFleet.size;
   TerranAirship *lastOfTerran = (TerranAirship *)vectorBack(&battleField->terranFleet);
   for (int i = 0; i < protossSize; i++)
@@ -116,14 +117,20 @@ bool processProtossTurn(BattleField *battleField)
     ProtossAirship* protossAirship = (ProtossAirship *)vectorGet(&battleField->protossFleet, i);
     int damage = 0;
     if(protossAirship->airship.type == PHOENIX){
+      // take damage done by atack airship and return value as int
       damage = baseProduceDamage(&protossAirship->airship);
+      // reduce health of enemy airship and remove if dead
       baseDealDamage(&lastOfTerran, &battleField->terranFleet, damage, protossAirship->airship.name, protossAirship->airship.ID);
+      // regen shield after phoenix turn is finished
+      phoenixRegenerate(protossAirship);
     }
     else if(protossAirship->airship.type == CARRIER){
-    
+    // return value of intercoptors count
      int attacks = getCarrierAtacks(protossAirship);
       terranDealDamageByCarrier(&lastOfTerran, &battleField->terranFleet, attacks,
-       protossAirship->airship.name, protossAirship->airship.ID);
+      protossAirship->airship.name, protossAirship->airship.ID);
+      // regen shield after carrier turn is finished
+      carrierRegenerate(protossAirship);
     } 
     if(battleField->terranFleet.size == 0){
       return true;
