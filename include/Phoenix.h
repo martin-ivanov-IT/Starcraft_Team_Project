@@ -5,11 +5,12 @@
 #include "Airship.h"
 #include "ProtossAirship.h"
 #include"TerranAirship.h"
+#include <stdlib.h>
 
 typedef ProtossAirship Phoenix;
-void initPhoenix(Phoenix* phoenix, const char *inputName, int inputHealth, int inputDamage,
+int initPhoenix(Phoenix* phoenix, const char *inputName, int inputHealth, int inputDamage,
             int inputShield, int inputShieldRegenerateRate, enum AirShipType airShipType, int index);
-void phoenixDealDamageToTerranAirship(Vector* terranFleet,TerranAirship** lastOfTerran, Phoenix* phoenix);
-void phoenixRegenerate(ProtossAirship* protossAirship);
+int phoenixDealDamageToTerranAirship(Vector* terranFleet,TerranAirship** lastOfTerran, Phoenix* phoenix);
+int phoenixRegenerate(ProtossAirship* protossAirship);
 
 #endif

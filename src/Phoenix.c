@@ -5,15 +5,29 @@
 #include"../include/TerranAirship.h"
 
 
-void initPhoenix(Phoenix* phoenix, const char *inputName, int inputHealth, int inputDamage,
+int initPhoenix(Phoenix* phoenix, const char *inputName, int inputHealth, int inputDamage,
             int inputShield, int inputShieldRegenerateRate, enum AirShipType airShipType, int index){
 
-    initProtossAirship(phoenix, inputName, inputHealth, inputDamage, inputShield, inputShieldRegenerateRate, airShipType, index);
+    if (phoenix == NULL)
+    {
+        return 1;
+    }
+
+    if(initProtossAirship(phoenix, inputName, inputHealth, inputDamage, inputShield, inputShieldRegenerateRate, airShipType, index)){
+        exit(0);
+    }
+    
+    return 0;
 }
 
-void phoenixRegenerate(ProtossAirship* protossAirship){
+int phoenixRegenerate(ProtossAirship* protossAirship){
+    if (protossAirship == NULL)
+    {
+        return 1;
+    }
     protossAirship->shield += protossAirship->shieldRegenerateRate;
     if(protossAirship->shield > PHOENIX_SHIELD){
             protossAirship->shield = PHOENIX_SHIELD;
     }
+    return 0;
 }

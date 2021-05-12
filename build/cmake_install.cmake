@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/HP/Downloads/Starcraft_Team_Project-4.4
+# Install script for directory: H:/C/Repos/Starcraft_Team_Project
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/HP/Downloads/Starcraft_Team_Project-4.4/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "H:/C/Repos/Starcraft_Team_Project/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -5,12 +5,13 @@
 #include "Airship.h"
 #include "ProtossAirship.h"
 #include"TerranAirship.h"
+#include <stdlib.h>
 
 typedef ProtossAirship Carrier;
  
-void initCarrier(Carrier* carrier, const char *inputName, int inputHealth, int inputDamage,
+int initCarrier(Carrier* carrier, const char *inputName, int inputHealth, int inputDamage,
             int inputShield, int inputShieldRegenerateRate, enum AirShipType airShipType, int index);
 
-int getCarrierAtacks(Carrier* carrier);
-void carrierRegenerate(ProtossAirship* protossAirship);
+int getCarrierAtacks(Carrier* carrier, int* errNo);
+int carrierRegenerate(ProtossAirship* protossAirship);
 #endif

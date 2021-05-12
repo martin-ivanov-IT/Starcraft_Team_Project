@@ -9,11 +9,21 @@ int main() {
   scanf("%s %s", terranFleet, protossFleet);
   
   BattleField battleField;
-  generateTerranFleet(&battleField, terranFleet);
-  generateProtossFleet(&battleField, protossFleet);
+  if(generateTerranFleet(&battleField, terranFleet)){
+    exit(0);
+  }
   
-  startBattle(&battleField);
-  deinit(&battleField);
+  if(generateProtossFleet(&battleField, terranFleet)){
+    exit(0);
+  }
+  
+  if(startBattle(&battleField)){
+    exit(0);
+  }
+  
+  if(deinit(&battleField)){
+    exit(0);
+  }
 
   return EXIT_SUCCESS;
 }

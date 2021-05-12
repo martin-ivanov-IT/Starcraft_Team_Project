@@ -4,6 +4,7 @@
 #include "Defines.h"
 #include "Airship.h"
 #include "Vector.h"
+#include <stdlib.h>
 
 typedef struct {
   Airship airship;
@@ -11,9 +12,9 @@ typedef struct {
   int shieldRegenerateRate;
 }ProtossAirship;
 
-void initProtossAirship(ProtossAirship* protossAirship, const char *inputName, int inputHealth, int inputDamage,
+int initProtossAirship(ProtossAirship* protossAirship, const char *inputName, int inputHealth, int inputDamage,
                  int shield, int shieldRegenerateRate, enum AirShipType airShipType, int index);
 
-void takeDamageProtoss(ProtossAirship* protossAirship, int damage);
-void protossDealDamage(ProtossAirship** lastOfProtoss, Vector* protossFleet, int damage, char* atackerName, int atackerID);
+int takeDamageProtoss(ProtossAirship* protossAirship, int damage);
+int protossDealDamage(ProtossAirship** lastOfProtoss, Vector* protossFleet, int damage, char* atackerName, int atackerID);
 #endif
