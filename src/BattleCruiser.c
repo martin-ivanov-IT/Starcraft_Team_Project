@@ -8,6 +8,7 @@ int initBattleCruiser(BattleCruiser* battleCruiser,  enum AirShipType airShipTyp
         return 1;
     }
     if(initAirship(battleCruiser, airShipType, inputName, inputHealth, inputDamage, index)){
+        perror("File \"BattleCruiser.c\",  initAirship()");
         exit(0);
     }
     

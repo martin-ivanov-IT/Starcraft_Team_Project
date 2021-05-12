@@ -2,6 +2,7 @@
 #include"../include/Airship.h"
 #include"../include/Defines.h"
 #include"../include/Vector.h"
+#include <stdio.h>
 int initProtossAirship(ProtossAirship* protossAirship, const char *inputName, int inputHealth, int inputDamage,
                  int shield, int shieldRegenerateRate, enum AirShipType airShipType, int index){
                     if (protossAirship == NULL)
@@ -9,6 +10,7 @@ int initProtossAirship(ProtossAirship* protossAirship, const char *inputName, in
                         return 1;
                     }
                     if(initAirship(&protossAirship->airship, airShipType, inputName, inputHealth, inputDamage, index)){
+                        perror("File \"ProtossAirship.c\",  initAirship()");
                         exit(0);
                     }
                      protossAirship->shield = shield;
@@ -17,10 +19,10 @@ int initProtossAirship(ProtossAirship* protossAirship, const char *inputName, in
                  }
                  
 int takeDamageProtoss(ProtossAirship* protossAirship, int damage){
-    if (protossAirship == NULL)
-    {
-        return 1;
-    }
+    // if (protossAirship == NULL)
+    // {
+    //     return 1;
+    // }
    if(protossAirship->shield >= damage){
        protossAirship->shield -= damage;
    }
@@ -38,14 +40,17 @@ int protossDealDamage(ProtossAirship** lastOfProtoss, Vector* protossFleet, int 
         return 1;
     }
     if(takeDamageProtoss((*lastOfProtoss), damage)){
+        perror("File \"ProtossAirship.c\",  takeDamageProtoss()");
         exit(0);
     }
-    int errNo;
+    int errNo = 0;
     if(!isAirshipAlive(&(*lastOfProtoss)->airship, &errNo)){
-        if(!errNo){
+        if(errNo){
+            perror("File \"ProtossAirship.c\",  isAirshipAlive()");
             exit(0);
         }
         if(printDead(atackerName, atackerID, (*lastOfProtoss)->airship.ID)){
+            perror("File \"ProtossAirship.c\",  printDead()");
             exit(0);
         }
         vectorPop(protossFleet);

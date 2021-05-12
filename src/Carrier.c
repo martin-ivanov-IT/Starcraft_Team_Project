@@ -9,6 +9,7 @@ int initCarrier(Carrier* carrier, const char *inputName, int inputHealth, int in
         return 1;
     }
     if(initProtossAirship((ProtossAirship*)carrier, inputName, inputHealth, inputDamage, inputShield, inputShieldRegenerateRate, airShipType, index)){
+        perror("File \"Carrier.c\",  initProtossAirship()");
         exit(0);
     }
     

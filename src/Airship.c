@@ -43,14 +43,17 @@ int baseDealDamage(Airship** lastAirship, Vector* army, int damage, char* atacke
     }
     int errNo = 0;
     if(baseTakeDamage((*lastAirship), damage)){
+        perror("File \"Airship.c\",  printDead()");
         exit(0);
     }
     
     if(!isAirshipAlive(*lastAirship, &errNo)){
         if(errNo){
+            perror("File \"Airship.c\",  isAirshipAlive()");
             exit(0);
         }
         if(printDead(atackerName,atackerID, (*lastAirship)->ID)){
+            perror("File \"Airship.c\",  printDead()");
             exit(0);
         }
         

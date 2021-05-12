@@ -31,6 +31,34 @@ CMakeFiles/starcraft.dir/src/Airship.c.obj: ../src/Airship.c \
   C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/sec_api/stdio_s.h \
   C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/_mingw_print_pop.h
 
+CMakeFiles/starcraft.dir/src/BattleCruiser.c.obj: ../src/BattleCruiser.c \
+  ../include/TerranAirship.h \
+  ../include/Defines.h \
+  ../include/Vector.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include/stddef.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/stddef.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/crtdefs.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/_mingw.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/_mingw_mac.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/_mingw_secapi.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/vadefs.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/sdks/_mingw_directx.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/sdks/_mingw_ddk.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include/stdbool.h \
+  ../include/Airship.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/stdlib.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed/limits.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed/syslimits.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/limits.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/sec_api/stdlib_s.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/malloc.h \
+  ../include/Carrier.h \
+  ../include/ProtossAirship.h \
+  ../include/TerranAirship.h \
+  ../include/Airship.h \
+  ../include/BattleCruiser.h \
+  ../include/Defines.h
+
 CMakeFiles/starcraft.dir/src/BattleField.c.obj: ../src/BattleField.c \
   C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/stdio.h \
   C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/crtdefs.h \
@@ -127,7 +155,13 @@ CMakeFiles/starcraft.dir/src/Phoenix.c.obj: ../src/Phoenix.c \
   ../include/Carrier.h \
   ../include/Airship.h \
   ../include/Defines.h \
-  ../include/TerranAirship.h
+  ../include/TerranAirship.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/stdio.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/_mingw_print_push.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/_mingw_off_t.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/swprintf.inl \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/sec_api/stdio_s.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/_mingw_print_pop.h
 
 CMakeFiles/starcraft.dir/src/ProtossAirship.c.obj: ../src/ProtossAirship.c \
   ../include/ProtossAirship.h \
@@ -152,7 +186,13 @@ CMakeFiles/starcraft.dir/src/ProtossAirship.c.obj: ../src/ProtossAirship.c \
   C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/malloc.h \
   ../include/Airship.h \
   ../include/Defines.h \
-  ../include/Vector.h
+  ../include/Vector.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/stdio.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/_mingw_print_push.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/_mingw_off_t.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/swprintf.inl \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/sec_api/stdio_s.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/_mingw_print_pop.h
 
 CMakeFiles/starcraft.dir/src/TerranAirship.c.obj: ../src/TerranAirship.c \
   ../include/TerranAirship.h \
@@ -229,7 +269,13 @@ CMakeFiles/starcraft.dir/src/Viking.c.obj: ../src/Viking.c \
   ../include/Viking.h \
   ../include/Defines.h \
   ../include/Vector.h \
-  ../include/ProtossAirship.h
+  ../include/ProtossAirship.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/stdio.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/_mingw_print_push.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/_mingw_off_t.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/swprintf.inl \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/sec_api/stdio_s.h \
+  C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/_mingw_print_pop.h
 
 CMakeFiles/starcraft.dir/src/main.c.obj: ../src/main.c \
   C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/stdio.h \
@@ -329,11 +375,13 @@ C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i68
 
 C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/_mingw_print_pop.h:
 
+../src/BattleCruiser.c:
+
+../include/TerranAirship.h:
+
 ../src/BattleField.c:
 
 ../include/BattleField.h:
-
-../include/TerranAirship.h:
 
 ../src/ProtossAirship.c:
 

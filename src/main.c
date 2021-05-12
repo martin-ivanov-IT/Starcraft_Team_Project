@@ -10,18 +10,22 @@ int main() {
   
   BattleField battleField;
   if(generateTerranFleet(&battleField, terranFleet)){
+    perror("File \"main.c\",  generateTerranFleet()");
     exit(0);
   }
   
-  if(generateProtossFleet(&battleField, terranFleet)){
+  if(generateProtossFleet(&battleField, protossFleet)){
+    perror("File \"main.c\",  generateProtossFleet()");
     exit(0);
   }
   
   if(startBattle(&battleField)){
+    perror("File \"main.c\",  startBattle()");
     exit(0);
   }
   
   if(deinit(&battleField)){
+    perror("File \"main.c\",  deinit()");
     exit(0);
   }
 

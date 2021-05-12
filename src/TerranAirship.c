@@ -8,6 +8,7 @@ int initTerranAirship(TerranAirship* terranAirship, enum AirShipType airShipType
         return 1;
     }
     if(initAirship(terranAirship, airShipType, inputName, inputHealth, inputDamage, index)){
+        perror("File \"TerranAirship.c\",  initAirship()");
         exit(0);
     }
     return 0;
@@ -21,15 +22,18 @@ int terranDealDamageByCarrier(TerranAirship** lastOfTerran, Vector* terranFleet,
     for(int i=0;i<attacks;i++)
     {
         if(baseTakeDamage((*lastOfTerran), CARRIER_DAMAGE)){
+            perror("File \"TerranAirship.c\",  baseTakeDamage()");
             exit(0);
         }
         
         int errNo;
         if(!isAirshipAlive(*lastOfTerran,&errNo)){
-            if(!errNo){
+            if(errNo){
+                perror("File \"TerranAirship.c\",  isAirshipAlive()");
                 exit(0);
             }
             if(printDead(atackerName, atackerID, (*lastOfTerran)->ID)){
+                perror("File \"TerranAirship.c\",  printDead()");
                exit(0); 
             }
             vectorPop(terranFleet);
