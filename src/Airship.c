@@ -1,7 +1,7 @@
-#include"../include/Airship.h"
-#include"../include/Defines.h"
 #include <string.h>
 #include <stdio.h>
+#include <Airship.h>
+
 
 int initAirship(Airship* airship, enum AirShipType airShipType, const char *inputName, int inputHealth, int inputDamage, int index){
     strncpy(airship->name, inputName, MAX_AIRSHIP_NAME_SIZE);

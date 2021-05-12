@@ -1,7 +1,4 @@
-#include"../include/ProtossAirship.h"
-#include"../include/Airship.h"
-#include"../include/Defines.h"
-#include"../include/Vector.h"
+#include"ProtossAirship.h"
 #include <stdio.h>
 int initProtossAirship(ProtossAirship* protossAirship, const char *inputName, int inputHealth, int inputDamage,
                  int shield, int shieldRegenerateRate, enum AirShipType airShipType, int index){

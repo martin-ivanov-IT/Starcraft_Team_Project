@@ -1,11 +1,8 @@
 #ifndef Phoenix_H_
 #define Phoenix_H_
 
-#include "Defines.h"
-#include "Airship.h"
 #include "ProtossAirship.h"
 #include"TerranAirship.h"
-#include <stdlib.h>
 
 typedef ProtossAirship Phoenix;
 int initPhoenix(Phoenix* phoenix, const char *inputName, int inputHealth, int inputDamage,

@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "battlecruiser.h": "c",
+        "viking.h": "c",
+        "phoenix.h": "c",
+        "terranairship.h": "c",
+        "protossairship.h": "c",
+        "defines.h": "c"
+    }
+}

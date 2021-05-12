@@ -1,8 +1,5 @@
-#include"../include/ProtossAirship.h"
-#include"../include/Phoenix.h"
-#include"../include/Airship.h"
-#include"../include/Defines.h"
-#include"../include/TerranAirship.h"
+
+#include"Phoenix.h"
 #include <stdio.h>
 
 

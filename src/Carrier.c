@@ -1,7 +1,5 @@
-#include"../include/ProtossAirship.h"
-#include"../include/Carrier.h"
-#include"../include/Airship.h"
-#include"../include/Defines.h"
+#include"Carrier.h"
+
 int initCarrier(Carrier* carrier, const char *inputName, int inputHealth, int inputDamage,
             int inputShield, int inputShieldRegenerateRate, enum AirShipType airShipType, int index){
     if (carrier == NULL)

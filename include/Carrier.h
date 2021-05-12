@@ -1,11 +1,8 @@
 #ifndef Carrier_H_
 #define Carrier_H_
 
-#include "Defines.h"
-#include "Airship.h"
 #include "ProtossAirship.h"
-#include"TerranAirship.h"
-#include <stdlib.h>
+
 
 typedef ProtossAirship Carrier;
  

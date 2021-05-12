@@ -1,7 +1,6 @@
-#include"../include/TerranAirship.h"
-#include"../include/Airship.h"
-#include"../include/BattleCruiser.h"
-#include"../include/Defines.h"
+#include <stdio.h>
+#include <BattleCruiser.h>
+
 int initBattleCruiser(BattleCruiser* battleCruiser,  enum AirShipType airShipType, const char *inputName, int inputHealth, int inputDamage, int index){
     if (battleCruiser == NULL)
     {

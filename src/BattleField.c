@@ -1,15 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include"../include/BattleField.h"
-#include"../include/ProtossAirship.h"
-#include"../include/TerranAirship.h"
-#include"../include/Viking.h"
-#include"../include/BattleCruiser.h"
-#include"../include/Phoenix.h"
-#include"../include/Carrier.h"
-#include"../include/Airship.h"
-#include"../include/Defines.h"
+#include"BattleField.h"
+#include"Phoenix.h"
+#include"Carrier.h"
+#include"BattleCruiser.h"
+#include"Viking.h"
+#include "Vector.h"
 
 
 //Initialize and fill up TerranFleet with Terran Airships according to string input

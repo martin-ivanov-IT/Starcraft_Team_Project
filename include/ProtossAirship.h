@@ -1,10 +1,6 @@
 #ifndef ProtossAirship_H_
 #define ProtossAirship_H_
-
-#include "Defines.h"
-#include "Airship.h"
-#include "Vector.h"
-#include <stdlib.h>
+#include"Airship.h"
 
 typedef struct {
   Airship airship;

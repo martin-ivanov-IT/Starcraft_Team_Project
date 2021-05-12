@@ -1,7 +1,5 @@
-#include"../include/TerranAirship.h"
-#include"../include/Airship.h"
-#include"../include/Carrier.h"
-#include"../include/Defines.h"
+#include"TerranAirship.h"
+
 int initTerranAirship(TerranAirship* terranAirship, enum AirShipType airShipType, const char *inputName, int inputHealth, int inputDamage, int index){
     if (terranAirship == NULL)
     {
