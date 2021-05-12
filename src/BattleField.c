@@ -86,7 +86,7 @@ int generateProtossFleet(BattleField *battleField, const char *protossFleetStr)
 // Count attack turns and check which Battelfield Fleed has remaining ships
 int startBattle(BattleField *battleField)
 {
-  int errNo;
+  //int errNo;
   if (battleField == NULL)
     {
         return 1;
@@ -96,7 +96,7 @@ int startBattle(BattleField *battleField)
   while (true)
   {
      turn++;
-    if (processTerranTurn(battleField, turn, &errNo))
+    if (processTerranTurn(battleField, turn))
     {
       if(errNo){
         perror("File \"BattleField.c\",  processTerranTurn()");
@@ -106,7 +106,7 @@ int startBattle(BattleField *battleField)
       break;
     }
 
-    if (processProtossTurn(battleField, &errNo))
+    if (processProtossTurn(battleField))
     {
       if(errNo){
         perror("File \"BattleField.c\",  processProtossTurn()");
@@ -121,14 +121,14 @@ int startBattle(BattleField *battleField)
 }
 
 // returns true when ProtossFleet has no ships left, else prints turn info and returns false
-bool processTerranTurn(BattleField *battleField, int turn, int* errNo)
+bool processTerranTurn(BattleField *battleField, int turn)
 {
   if (battleField == NULL)
     {
-        *errNo = 1;
+        errNo = 1;
     }
     
-  int internErrNo = 0;
+  internErrNo = 0;
   int terranSize = battleField->terranFleet.size;
   ProtossAirship *lastOfProtoss = (ProtossAirship *)vectorBack(&battleField->protossFleet);
   
@@ -140,7 +140,7 @@ bool processTerranTurn(BattleField *battleField, int turn, int* errNo)
     
     if(terranAirship->type == VIKING){
       // take damage done by atack airship and return value as int
-      damage = vikingProduceDamage(lastOfProtoss->airship.type, &internErrNo);
+      damage = vikingProduceDamage(lastOfProtoss->airship.type);
 
       if(internErrNo){
         perror("File \"BattleField.c\",  vikingProduceDamage()");
@@ -150,7 +150,7 @@ bool processTerranTurn(BattleField *battleField, int turn, int* errNo)
     }
     
     else if(terranAirship->type == BATTLE_CRUSER){
-      damage = battleCruiseProduceDamage(turn, &internErrNo);
+      damage = battleCruiseProduceDamage(turn);
       if(internErrNo){
         perror("File \"BattleField.c\",  battleCruiseProduceDamage()");
         exit(0);
@@ -170,19 +170,18 @@ bool processTerranTurn(BattleField *battleField, int turn, int* errNo)
         perror("File \"BattleField.c\",  printProtossHurt()");
         exit(0);
     }
-  *errNo = 0;
+  errNo = 0;
   return false;
 }
 
 // returns true when TerranFleet has no ships left, else prints turn info and returns false
-bool processProtossTurn(BattleField *battleField, int* errNo)
+bool processProtossTurn(BattleField *battleField)
 {
   if (battleField == NULL)
     {
-        *errNo = 1;
+        errNo = 1;
     }
-
-  int internErrNo;
+  internErrNo = 0;
   int protossSize = battleField->protossFleet.size;
   TerranAirship *lastOfTerran = (TerranAirship *)vectorBack(&battleField->terranFleet);
   for (int i = 0; i < protossSize; i++)
@@ -191,7 +190,7 @@ bool processProtossTurn(BattleField *battleField, int* errNo)
     int damage = 0;
     if(protossAirship->airship.type == PHOENIX){
       // take damage done by atack airship and return value as int
-      damage = baseProduceDamage(&protossAirship->airship, &internErrNo);
+      damage = baseProduceDamage(&protossAirship->airship);
       if(internErrNo){
         perror("File \"BattleField.c\",  baseProduceDamage()");
         exit(0);
@@ -211,7 +210,7 @@ bool processProtossTurn(BattleField *battleField, int* errNo)
     }
     else if(protossAirship->airship.type == CARRIER){
     // return value of intercoptors count
-     int attacks = getCarrierAtacks(protossAirship, &internErrNo);
+     int attacks = getCarrierAtacks(protossAirship);
      if(internErrNo){
        perror("File \"BattleField.c\",  getCarrierAtacks()");
        exit(0);
@@ -236,7 +235,7 @@ bool processProtossTurn(BattleField *battleField, int* errNo)
     exit(0);
   }
    // after all Protoss Airships have stiked
-  *errNo = 0;
+  errNo = 0;
   return false;
 }
 

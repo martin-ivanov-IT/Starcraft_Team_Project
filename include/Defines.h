@@ -7,6 +7,8 @@
 #define PHOENIX_NAME "Phoenix"
 #define CARRIER_NAME "Carrier"
 
+int errNo;
+int internErrNo;
 
 enum AirShipDefines {
   BATTLE_CRUSER_HEALTH = 450,

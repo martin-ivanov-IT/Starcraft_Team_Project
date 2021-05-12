@@ -13,13 +13,13 @@ int initBattleCruiser(BattleCruiser* battleCruiser,  enum AirShipType airShipTyp
     
     return 0;
 }
-int battleCruiseProduceDamage(int turn, int* errNo){
+int battleCruiseProduceDamage(int turn){
     if(turn < 0 ){
-        *errNo = 1;
+        errNo = 1;
     }
     if(!(turn%YAMATO_CANNON_LOADING_TURNS)){
         return BATTLE_BRUSER_POWER_DAMAGE;
     }
-    *errNo = 0;
+    errNo = 0;
     return BATTLE_BRUSER_DAMAGE;
 }

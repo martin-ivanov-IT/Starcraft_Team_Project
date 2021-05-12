@@ -13,13 +13,13 @@ int initViking(Viking* viking,  enum AirShipType airShipType, const char *inputN
     return 0;
 }
 
-int vikingProduceDamage(enum AirShipType enemyAirShipType, int* errNo){
+int vikingProduceDamage(enum AirShipType enemyAirShipType){
     int damage = VIKING_DAMAGE;
     if(enemyAirShipType == PHOENIX){
         damage = VIKING_DOUBLE_DAMAGE;
     }
     
-    *errNo = 0;
+    errNo = 0;
     
     return damage;
 }

@@ -40,8 +40,8 @@ int protossDealDamage(ProtossAirship** lastOfProtoss, Vector* protossFleet, int 
         perror("File \"ProtossAirship.c\",  takeDamageProtoss()");
         exit(0);
     }
-    int errNo = 0;
-    if(!isAirshipAlive(&(*lastOfProtoss)->airship, &errNo)){
+    errNo = 0;
+    if(!isAirshipAlive(&(*lastOfProtoss)->airship)){
         if(errNo){
             perror("File \"ProtossAirship.c\",  isAirshipAlive()");
             exit(0);

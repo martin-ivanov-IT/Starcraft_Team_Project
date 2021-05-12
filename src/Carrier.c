@@ -14,16 +14,16 @@ int initCarrier(Carrier* carrier, const char *inputName, int inputHealth, int in
     return 0;
 }
 // return count of intereptort
-int getCarrierAtacks(Carrier* carrier, int* errNo){
+int getCarrierAtacks(Carrier* carrier){
     if (carrier == NULL)
     {
-        *errNo = 1;
+        errNo = 1;
     }
     int attacks =MAX_INTERCEPTORS;
     if(carrier->airship.health < CARRIER_HEALTH){
         attacks = DAMAGED_STATUS_INTERCEPTORS;
     }
-    *errNo = 0;
+    errNo = 0;
     return attacks;
 }
 

@@ -16,8 +16,8 @@ int startBattle(BattleField *battleField);
 
 int deinit(BattleField *battleField);
 
-bool processTerranTurn(BattleField *battleField, int turn, int* errNo);
-bool processProtossTurn(BattleField *battleField, int* errNo);
+bool processTerranTurn(BattleField *battleField, int turn);
+bool processProtossTurn(BattleField *battleField);
 int printTerranHurt(TerranAirship *terranAirship);
 int printProtossHurt(ProtossAirship *protossAirship);
 int printKilledTerranByProtoss(ProtossAirship *protossAirship, int attackerID, int enemyID);

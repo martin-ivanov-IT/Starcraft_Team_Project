@@ -18,12 +18,12 @@ int initAirship(Airship* airship, enum AirShipType airShipType, const char *inpu
     return 0;
 }
 
-int baseProduceDamage(Airship* airship, int* errNo){
+int baseProduceDamage(Airship* airship){
     if (airship == NULL)
     {
-        *errNo = 1;
+        errNo = 1;
     }
-    *errNo = 0;
+    errNo = 0;
     return airship->damage;
 }
 int baseTakeDamage(Airship* airship, int damage){
@@ -41,13 +41,13 @@ int baseDealDamage(Airship** lastAirship, Vector* army, int damage, char* atacke
     {
         return 1;
     }
-    int errNo = 0;
+    errNo = 0;
     if(baseTakeDamage((*lastAirship), damage)){
         perror("File \"Airship.c\",  printDead()");
         exit(0);
     }
     
-    if(!isAirshipAlive(*lastAirship, &errNo)){
+    if(!isAirshipAlive(*lastAirship)){
         if(errNo){
             perror("File \"Airship.c\",  isAirshipAlive()");
             exit(0);
@@ -66,12 +66,12 @@ int baseDealDamage(Airship** lastAirship, Vector* army, int damage, char* atacke
     return 0;
 }
 // check if airship health is under 0 and return true if is above 0
-bool isAirshipAlive(Airship* airship, int* errNo){
+bool isAirshipAlive(Airship* airship){
     if (airship == NULL)
     {
-        *errNo = 1;
+        errNo = 1;
     }
-    *errNo = 0;
+    errNo = 0;
 
     if(airship->health <= 0){
         return false;

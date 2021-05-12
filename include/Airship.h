@@ -13,9 +13,9 @@ typedef struct {
 }Airship;
 
 int initAirship(Airship* airship, enum AirShipType airShipType, const char *inputName, int inputHealth, int inputDamage, int index);
-int baseProduceDamage(Airship* airship, int* errNo);
+int baseProduceDamage(Airship* airship);
 int baseTakeDamage(Airship* airship, int damage);
-bool isAirshipAlive(Airship* airship, int* errNo);
+bool isAirshipAlive(Airship* airship);
 int baseDealDamage(Airship** lastAirship, Vector* army, int damage, char* atackerName,int atackerID);
 int printDead(char* atackerName,int atackerID, int enemyID);
 

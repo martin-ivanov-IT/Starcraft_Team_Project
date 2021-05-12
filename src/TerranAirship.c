@@ -24,8 +24,7 @@ int terranDealDamageByCarrier(TerranAirship** lastOfTerran, Vector* terranFleet,
             exit(0);
         }
         
-        int errNo;
-        if(!isAirshipAlive(*lastOfTerran,&errNo)){
+        if(!isAirshipAlive(*lastOfTerran)){
             if(errNo){
                 perror("File \"TerranAirship.c\",  isAirshipAlive()");
                 exit(0);
