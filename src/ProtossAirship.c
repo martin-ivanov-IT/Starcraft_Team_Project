@@ -12,7 +12,7 @@ int initProtossAirship(ProtossAirship* protossAirship, const char *inputName, in
                     }
                      protossAirship->shield = shield;
                      protossAirship->shieldRegenerateRate = shieldRegenerateRate;
-                     return 0;
+                     return EXIT_SUCCESS;
                  }
                  
 int takeDamageProtoss(ProtossAirship* protossAirship, int damage){
