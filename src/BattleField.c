@@ -48,12 +48,12 @@ int generateTerranFleet(BattleField *battleField, const char *terranFleetStr)
     }
 
     else{
-      return 1;
+      return EXIT_FAILURE;
     }
 
     index++;
   }
-  return 0;
+  return EXIT_SUCCESS;
 }
 
 //Initialize and fill up ProtossFleet with Protoss Airships according to string input
@@ -61,7 +61,7 @@ int generateProtossFleet(BattleField *battleField, const char *protossFleetStr)
 {
   if (battleField == NULL)
     {
-        return 1;
+        return EXIT_FAILURE;
     }
   
   vectorInit(&battleField->protossFleet, strlen(protossFleetStr));
@@ -97,12 +97,12 @@ int generateProtossFleet(BattleField *battleField, const char *protossFleetStr)
       vectorPush(&battleField->protossFleet, carrier);
     }
     else{
-      return 1;
+      return EXIT_FAILURE;
     }
     index++;
   }
 
-  return 0;
+  return EXIT_SUCCESS;
 }
 // Count attack turns and check which Battelfield Fleed has remaining ships
 int startBattle(BattleField *battleField)
@@ -138,7 +138,7 @@ int startBattle(BattleField *battleField)
     }
 
   }
-  return 0;
+  return EXIT_SUCCESS;
 }
 
 // returns true when ProtossFleet has no ships left, else prints turn info and returns false
@@ -149,7 +149,7 @@ bool processTerranTurn(BattleField *battleField, int turn, int* errNo)
         *errNo = 1;
     }
     
-  int internErrNo = 0;
+  int internErrNo = EXIT_SUCCESS;
   int terranSize = battleField->terranFleet.size;
   ProtossAirship *lastOfProtoss = (ProtossAirship *)vectorBack(&battleField->protossFleet);
   
@@ -191,7 +191,7 @@ bool processTerranTurn(BattleField *battleField, int turn, int* errNo)
         fprintf(stderr, "File \"BattleField.c\",  printProtossHurt()");
         exit(EXIT_FAILURE);
     }
-  *errNo = 0;
+  *errNo = EXIT_SUCCESS;
   return false;
 }
 
@@ -257,7 +257,7 @@ bool processProtossTurn(BattleField *battleField, int* errNo)
     exit(EXIT_FAILURE);
   }
    // after all Protoss Airships have stiked
-  *errNo = 0;
+  *errNo = EXIT_SUCCESS;
   return false;
 }
 

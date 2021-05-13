@@ -10,7 +10,7 @@ int initTerranAirship(TerranAirship* terranAirship, enum AirShipType airShipType
         fprintf(stderr,"File \"TerranAirship.c\",  initAirship()");
         exit(EXIT_FAILURE);
     }
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 int terranDealDamageByCarrier(TerranAirship** lastOfTerran, Vector* terranFleet, int attacks, char* atackerName, int atackerID){
