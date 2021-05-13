@@ -5,7 +5,7 @@ int initProtossAirship(ProtossAirship* protossAirship, const char *inputName, in
                  int shield, int shieldRegenerateRate, enum AirShipType airShipType, int index){
     if(initAirship(&protossAirship->airship, airShipType, inputName, inputHealth, inputDamage, index)){
         printf("ERROR: File \"ProtossAirship.c\",  initAirship()");
-        exit(0);
+        exit(EXIT_FAILURE);
     }
     protossAirship->shield = shield;
     protossAirship->shieldRegenerateRate = shieldRegenerateRate;
@@ -27,17 +27,17 @@ int takeDamageProtoss(ProtossAirship* protossAirship, int damage){
 int protossDealDamage(ProtossAirship** lastOfProtoss, Vector* protossFleet, int damage, char* atackerName, int atackerID){
     if(takeDamageProtoss((*lastOfProtoss), damage)){
         printf("ERROR: File \"ProtossAirship.c\",  takeDamageProtoss()");
-        exit(0);
+        exit(EXIT_FAILURE);
     }
     errNo = 0;
     if(!isAirshipAlive(&(*lastOfProtoss)->airship)){
         if(errNo){
             printf("ERROR: File \"ProtossAirship.c\",  isAirshipAlive()");
-            exit(0);
+            exit(EXIT_FAILURE);
         }
         if(printDead(atackerName, atackerID, (*lastOfProtoss)->airship.ID)){
             printf("ERROR: File \"ProtossAirship.c\",  printDead()");
-            exit(0);
+            exit(EXIT_FAILURE);
         }
         vectorPop(protossFleet);
         if(protossFleet->size == 0){

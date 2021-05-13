@@ -7,7 +7,7 @@ void initPhoenix(Phoenix* phoenix, const char *inputName, int inputHealth, int i
             int inputShield, int inputShieldRegenerateRate, enum AirShipType airShipType, int index){
     if(initProtossAirship(phoenix, inputName, inputHealth, inputDamage, inputShield, inputShieldRegenerateRate, airShipType, index)){
         perror("File \"Phoenix.c\",  initProtossAirship()");
-        exit(0);
+        exit(EXIT_FAILURE);
     }
 }
 

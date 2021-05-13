@@ -23,12 +23,12 @@ int main() {
   }
   
   if(startBattle(&battleField)){
-    exit(0);
+    exit(EXIT_FAILURE);
   }
   
   if(deinit(&battleField)){
     perror("File \"main.c\",  deinit()");
-    exit(0);
+    exit(EXIT_FAILURE);
   }
 
   return EXIT_SUCCESS;

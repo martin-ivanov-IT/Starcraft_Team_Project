@@ -1,10 +1,11 @@
+#include <stdio.h>
 #include"Carrier.h"
 
 void initCarrier(Carrier* carrier, const char *inputName, int inputHealth, int inputDamage,
                 int inputShield, int inputShieldRegenerateRate, enum AirShipType airShipType, int index){
     if(initProtossAirship((ProtossAirship*)carrier, inputName, inputHealth, inputDamage, inputShield, inputShieldRegenerateRate, airShipType, index)){
-        //printf("ERROR: File \"Carrier.c\",  initProtossAirship()");
-        exit(0);
+        printf("ERROR: File \"Carrier.c\",  initProtossAirship()");
+        exit(EXIT_FAILURE);
     }
 }
 // return count of intereptort

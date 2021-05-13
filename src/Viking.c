@@ -1,10 +1,11 @@
 
 #include"Viking.h"
 #include <stdio.h>
-void initViking(Viking* viking,  enum AirShipType airShipType, const char *inputName, int inputHealth, int inputDamage, int index){
+
+void initViking(Viking *viking,  enum AirShipType airShipType, const char *inputName, int inputHealth, int inputDamage, int index){
     if(initAirship(viking, airShipType, inputName, inputHealth, inputDamage, index)){
         printf("ERROR: File \"Viking.c\",  initAirship()");
-        exit(0);
+        exit(EXIT_FAILURE);
     }
 }
 

@@ -4,7 +4,7 @@
 void initBattleCruiser(BattleCruiser* battleCruiser,  enum AirShipType airShipType, const char *inputName, int inputHealth, int inputDamage, int index){
     if(initAirship(battleCruiser, airShipType, inputName, inputHealth, inputDamage, index)){
         printf("ERROR: File \"BattleCruiser.c\",  initAirship()");
-        exit(0);
+        exit(EXIT_FAILURE);
     }
 }
 

@@ -28,21 +28,21 @@ int baseTakeDamage(Airship *airship, int damage){
 }
 
 //reduce health and remove airhip if is dead after attack
-int baseDealDamage(Airship **lastAirship, Vector *army, int damage, char *atackerName,int atackerID){
+int baseDealDamage(Airship **lastAirship, Vector *army, int damage, char *atackerName, int atackerID){
     errNo = 0;
     if(baseTakeDamage((*lastAirship), damage)){
         perror("File \"Airship.c\",  printDead()");
-        exit(0);
+        exit(EXIT_FAILURE);
     }
     
     if(!isAirshipAlive(*lastAirship)){
         if(errNo){
             perror("File \"Airship.c\",  isAirshipAlive()");
-            exit(0);
+            exit(EXIT_FAILURE);
         }
         if(printDead(atackerName,atackerID, (*lastAirship)->ID)){
             perror("File \"Airship.c\",  printDead()");
-            exit(0);
+            exit(EXIT_FAILURE);
         }
         
         vectorPop(army);
@@ -55,11 +55,6 @@ int baseDealDamage(Airship **lastAirship, Vector *army, int damage, char *atacke
 }
 // check if airship health is under 0 and return true if is above 0
 bool isAirshipAlive(Airship *airship){
-    if (airship == NULL){
-        errNo = 1;
-    }
-    errNo = 0;
-
     if(airship->health <= 0){
         return false;
     }

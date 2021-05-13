@@ -6,6 +6,9 @@ void vectorInit(Vector *vec, size_t initialCapacity) {
   vec->capacity = initialCapacity;
   vec->size = 0;
   vec->items = malloc(sizeof(void*) * vec->capacity);
+  if(vec->items==NULL){
+        perror("File /'Vector.c/',  vectorInit()");
+  }
 }
 
 size_t vectorGetSize(Vector *v) {
@@ -18,6 +21,9 @@ bool vectorIsEmpty(Vector *vec) {
 
 void vectorResize(Vector *vec, size_t capacity) {
   void **items = realloc(vec->items, sizeof(void*) * capacity);
+  if(vec->items==NULL){
+        perror("File /'Vector.c/',  vectorResize()");
+  }
   if (items) {
     vec->items = items;
     vec->capacity = capacity;
