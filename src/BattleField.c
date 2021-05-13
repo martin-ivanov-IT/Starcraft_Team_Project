@@ -24,7 +24,7 @@ int generateTerranFleet(BattleField *battleField, const char *terranFleetStr)
       Viking* viking = malloc(sizeof(Viking));
       if(initViking(viking, VIKING, VIKING_NAME, VIKING_HEALTH, VIKING_DAMAGE, index)){
         perror("File \"BattleField.c\",  initViking()");
-        exit(0);
+        exit(EXIT_FAILURE);
       }
       vectorPush(&battleField->terranFleet, viking);
     }
@@ -32,11 +32,16 @@ int generateTerranFleet(BattleField *battleField, const char *terranFleetStr)
       BattleCruiser* battleCruiser = malloc(sizeof(BattleCruiser));
       if(initBattleCruiser(battleCruiser, BATTLE_CRUSER, BATTLE_CRUSER_NAME, BATTLE_CRUSER_HEALTH, BATTLE_BRUSER_DAMAGE, index)){
         perror("File \"BattleField.c\",  initBattleCruiser()");
-        exit(0);
+        exit(EXIT_FAILURE);
       }
+
       
   
       vectorPush(&battleField->terranFleet, battleCruiser);
+    }
+
+    else{
+      return 1;
     }
 
     index++;
@@ -64,7 +69,7 @@ int generateProtossFleet(BattleField *battleField, const char *protossFleetStr)
       if(initPhoenix(phoenix, PHOENIX_NAME, PHOENIX_HEALTH, PHOENIX_DAMAGE, PHOENIX_SHIELD,
                   PHOENIX_SHIELD_REGENERATE_RATE, PHOENIX, index)){
                     perror("File \"BattleField.c\",  initPhoenix()");
-                    exit(0);
+                    exit(EXIT_FAILURE);
                   }
       vectorPush(&battleField->protossFleet, phoenix);
     }
@@ -74,9 +79,12 @@ int generateProtossFleet(BattleField *battleField, const char *protossFleetStr)
       if(initCarrier(carrier, CARRIER_NAME, CARRIER_HEALTH, CARRIER_DAMAGE, CARRIER_SHIELD,
                   CARRIER_SHIELD_REGENERATE_RATE, CARRIER, index)){
                     perror("File \"BattleField.c\",  initCarrier()");
-                    exit(0);
+                    exit(EXIT_FAILURE);
                   }
       vectorPush(&battleField->protossFleet, carrier);
+    }
+    else{
+      return 1;
     }
     index++;
   }
@@ -100,7 +108,7 @@ int startBattle(BattleField *battleField)
     {
       if(errNo){
         perror("File \"BattleField.c\",  processTerranTurn()");
-        exit(0);
+        exit(EXIT_FAILURE);
       }
       printf("TERRAN has won!\n");
       break;
@@ -110,7 +118,7 @@ int startBattle(BattleField *battleField)
     {
       if(errNo){
         perror("File \"BattleField.c\",  processProtossTurn()");
-        exit(0);
+        exit(EXIT_FAILURE);
       }
       printf("PROTOSS has won!\n");
       break;
@@ -144,7 +152,7 @@ bool processTerranTurn(BattleField *battleField, int turn, int* errNo)
 
       if(internErrNo){
         perror("File \"BattleField.c\",  vikingProduceDamage()");
-        exit(0);
+        exit(EXIT_FAILURE);
       }
       
     }
@@ -153,13 +161,13 @@ bool processTerranTurn(BattleField *battleField, int turn, int* errNo)
       damage = battleCruiseProduceDamage(turn, &internErrNo);
       if(internErrNo){
         perror("File \"BattleField.c\",  battleCruiseProduceDamage()");
-        exit(0);
+        exit(EXIT_FAILURE);
       }
     }
     // reduce health and sheild of enemy airship and remove if dead
     if(protossDealDamage(&lastOfProtoss, &battleField->protossFleet,damage, terranAirship->name, terranAirship->ID)){
         perror("File \"BattleField.c\",  protossDealDamage()");
-        exit(0);
+        exit(EXIT_FAILURE);
     }
     
     if(battleField->protossFleet.size == 0){
@@ -168,7 +176,7 @@ bool processTerranTurn(BattleField *battleField, int turn, int* errNo)
   }
   if(printProtossHurt(lastOfProtoss)){
         perror("File \"BattleField.c\",  printProtossHurt()");
-        exit(0);
+        exit(EXIT_FAILURE);
     }
   *errNo = 0;
   return false;
@@ -179,7 +187,7 @@ bool processProtossTurn(BattleField *battleField, int* errNo)
 {
   if (battleField == NULL)
     {
-        *errNo = 1;
+        *errNo = EXIT_FAILURE;
     }
 
   int internErrNo;
@@ -194,19 +202,19 @@ bool processProtossTurn(BattleField *battleField, int* errNo)
       damage = baseProduceDamage(&protossAirship->airship, &internErrNo);
       if(internErrNo){
         perror("File \"BattleField.c\",  baseProduceDamage()");
-        exit(0);
+        exit(EXIT_FAILURE);
       }
 
       // reduce health of enemy airship and remove if dead
       if(baseDealDamage(&lastOfTerran, &battleField->terranFleet, damage, protossAirship->airship.name, protossAirship->airship.ID)){
         perror("File \"BattleField.c\",  baseDealDamage()");
-        exit(0);
+        exit(EXIT_FAILURE);
       }
       
       // regen shield after phoenix turn is finished
       if(phoenixRegenerate(protossAirship)){
         perror("File \"BattleField.c\",  phoenixRegenerate()");
-        exit(0);
+        exit(EXIT_FAILURE);
       }    
     }
     else if(protossAirship->airship.type == CARRIER){
@@ -214,17 +222,17 @@ bool processProtossTurn(BattleField *battleField, int* errNo)
      int attacks = getCarrierAtacks(protossAirship, &internErrNo);
      if(internErrNo){
        perror("File \"BattleField.c\",  getCarrierAtacks()");
-       exit(0);
+       exit(EXIT_FAILURE);
      }
      if(terranDealDamageByCarrier(&lastOfTerran, &battleField->terranFleet, attacks,
       protossAirship->airship.name, protossAirship->airship.ID)){
         perror("File \"BattleField.c\",  terranDealDamageByCarrier()");
-        exit(0);
+        exit(EXIT_FAILURE);
       } 
       // regen shield after carrier turn is finished
       if(carrierRegenerate(protossAirship)){
         perror("File \"BattleField.c\",  carrierRegenerate()");
-        exit(0);
+        exit(EXIT_FAILURE);
       }  
     } 
     if(battleField->terranFleet.size == 0){
@@ -233,7 +241,7 @@ bool processProtossTurn(BattleField *battleField, int* errNo)
   }
   if(printTerranHurt(lastOfTerran)){
     perror("File \"BattleField.c\",  printTerranHurt()");
-    exit(0);
+    exit(EXIT_FAILURE);
   }
    // after all Protoss Airships have stiked
   *errNo = 0;
@@ -244,21 +252,21 @@ int printTerranHurt(TerranAirship *terranAirship)
 {
   if (terranAirship == NULL)
     {
-        return 1;
+        return EXIT_FAILURE;
     }
   printf("Last Terran AirShip with ID: %d has %d health left\n", terranAirship->ID, terranAirship->health);
-  return 0;
+  return EXIT_SUCCESS;
 }
 
 int printProtossHurt(ProtossAirship *protossAirship)
 {
   if (protossAirship == NULL)
     {
-        return 1;
+        return EXIT_FAILURE;
     }
 
   printf("Last Protoss AirShip with ID: %d has %d health and %d shield left\n", protossAirship->airship.ID, protossAirship->airship.health, protossAirship->shield);
-  return 0;
+  return EXIT_SUCCESS;
 }
 
 // Free the memory allocated for the Airships, then free the memory allocated for the BattleFleeds
@@ -266,7 +274,7 @@ int deinit(BattleField *battleField)
 {
   if (battleField == NULL)
     {
-        return 1;
+        return EXIT_FAILURE;
     }
 
   int terranSize = battleField->terranFleet.size;
@@ -281,5 +289,5 @@ int deinit(BattleField *battleField)
   }
   vectorFree(&battleField->terranFleet);
   vectorFree(&battleField->protossFleet);
-  return 0;
+  return EXIT_SUCCESS;
 }

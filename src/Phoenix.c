@@ -8,24 +8,24 @@ int initPhoenix(Phoenix* phoenix, const char *inputName, int inputHealth, int in
                 
     if (phoenix == NULL)
     {
-        return 1;
+        return EXIT_FAILURE;
     }
     if(initProtossAirship(phoenix, inputName, inputHealth, inputDamage, inputShield, inputShieldRegenerateRate, airShipType, index)){
         perror("File \"Phoenix.c\",  initProtossAirship()");
         exit(0);
     }
     
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 int phoenixRegenerate(ProtossAirship* protossAirship){
     if (protossAirship == NULL)
     {
-        return 1;
+        return EXIT_FAILURE;
     }
     protossAirship->shield += protossAirship->shieldRegenerateRate;
     if(protossAirship->shield > PHOENIX_SHIELD){
             protossAirship->shield = PHOENIX_SHIELD;
     }
-    return 0;
+    return EXIT_SUCCESS;
 }

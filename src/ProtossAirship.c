@@ -4,11 +4,11 @@ int initProtossAirship(ProtossAirship* protossAirship, const char *inputName, in
                  int shield, int shieldRegenerateRate, enum AirShipType airShipType, int index){
                     if (protossAirship == NULL)
                     {
-                        return 1;
+                        return EXIT_SUCCESS;
                     }
                     if(initAirship(&protossAirship->airship, airShipType, inputName, inputHealth, inputDamage, index)){
                         perror("File \"ProtossAirship.c\",  initAirship()");
-                        exit(0);
+                        exit(EXIT_FAILURE);
                     }
                      protossAirship->shield = shield;
                      protossAirship->shieldRegenerateRate = shieldRegenerateRate;
@@ -16,10 +16,10 @@ int initProtossAirship(ProtossAirship* protossAirship, const char *inputName, in
                  }
                  
 int takeDamageProtoss(ProtossAirship* protossAirship, int damage){
-    // if (protossAirship == NULL)
-    // {
-    //     return 1;
-    // }
+    if (protossAirship == NULL)
+    {
+        return EXIT_FAILURE;
+    }
    if(protossAirship->shield >= damage){
        protossAirship->shield -= damage;
    }
@@ -28,33 +28,33 @@ int takeDamageProtoss(ProtossAirship* protossAirship, int damage){
        protossAirship->shield = 0;
        protossAirship->airship.health -= damageToHealth;
    }
-   return 0;
+   return EXIT_SUCCESS;
 }
 
 int protossDealDamage(ProtossAirship** lastOfProtoss, Vector* protossFleet, int damage, char* atackerName, int atackerID){
     if (lastOfProtoss == NULL)
     {
-        return 1;
+        return EXIT_SUCCESS;
     }
     if(takeDamageProtoss((*lastOfProtoss), damage)){
         perror("File \"ProtossAirship.c\",  takeDamageProtoss()");
-        exit(0);
+        exit(EXIT_FAILURE);
     }
     int errNo = 0;
     if(!isAirshipAlive(&(*lastOfProtoss)->airship, &errNo)){
         if(errNo){
             perror("File \"ProtossAirship.c\",  isAirshipAlive()");
-            exit(0);
+            exit(EXIT_FAILURE);
         }
         if(printDead(atackerName, atackerID, (*lastOfProtoss)->airship.ID)){
             perror("File \"ProtossAirship.c\",  printDead()");
-            exit(0);
+            exit(EXIT_FAILURE);
         }
         vectorPop(protossFleet);
         if(protossFleet->size == 0){
-            return 0;
+            return EXIT_FAILURE;
         }
         (*lastOfProtoss) = (ProtossAirship*)vectorBack(protossFleet);
     }
-    return 0;
+    return EXIT_SUCCESS;
 }

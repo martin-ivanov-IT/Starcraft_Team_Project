@@ -4,13 +4,13 @@
 int initViking(Viking* viking,  enum AirShipType airShipType, const char *inputName, int inputHealth, int inputDamage, int index){
     if (viking == NULL)
     {
-        return 1;
+        return EXIT_SUCCESS;
     }
     if(initAirship(viking, airShipType, inputName, inputHealth, inputDamage, index)){
         perror("File \"Viking.c\",  initAirship()");
-        exit(0);
+        exit(EXIT_FAILURE);
     }
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 int vikingProduceDamage(enum AirShipType enemyAirShipType, int* errNo){
@@ -19,7 +19,7 @@ int vikingProduceDamage(enum AirShipType enemyAirShipType, int* errNo){
         damage = VIKING_DOUBLE_DAMAGE;
     }
     
-    *errNo = 0;
+    *errNo = EXIT_SUCCESS;
     
     return damage;
 }

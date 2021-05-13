@@ -48,12 +48,12 @@ CMakeFiles/starcraft.dir/src/BattleCruiser.c.obj
  C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/_mingw_print_pop.h
  H:/C/Repos/Starcraft_Team_Project/include/BattleCruiser.h
  H:/C/Repos/Starcraft_Team_Project/include/TerranAirship.h
+ H:/C/Repos/Starcraft_Team_Project/include/Airship.h
  H:/C/Repos/Starcraft_Team_Project/include/Defines.h
  H:/C/Repos/Starcraft_Team_Project/include/Vector.h
  C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include/stddef.h
  C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/stddef.h
  C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include/stdbool.h
- H:/C/Repos/Starcraft_Team_Project/include/Airship.h
  C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/stdlib.h
  C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed/limits.h
  C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed/syslimits.h
@@ -87,12 +87,12 @@ CMakeFiles/starcraft.dir/src/BattleField.c.obj
  C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/sec_api/string_s.h
  H:/C/Repos/Starcraft_Team_Project/include/BattleField.h
  H:/C/Repos/Starcraft_Team_Project/include/TerranAirship.h
+ H:/C/Repos/Starcraft_Team_Project/include/Airship.h
  H:/C/Repos/Starcraft_Team_Project/include/Defines.h
  H:/C/Repos/Starcraft_Team_Project/include/Vector.h
  C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include/stddef.h
  C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/stddef.h
  C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include/stdbool.h
- H:/C/Repos/Starcraft_Team_Project/include/Airship.h
  H:/C/Repos/Starcraft_Team_Project/include/ProtossAirship.h
  H:/C/Repos/Starcraft_Team_Project/include/Phoenix.h
  H:/C/Repos/Starcraft_Team_Project/include/Carrier.h
@@ -187,6 +187,7 @@ CMakeFiles/starcraft.dir/src/ProtossAirship.c.obj
 CMakeFiles/starcraft.dir/src/TerranAirship.c.obj
  H:/C/Repos/Starcraft_Team_Project/src/TerranAirship.c
  H:/C/Repos/Starcraft_Team_Project/include/TerranAirship.h
+ H:/C/Repos/Starcraft_Team_Project/include/Airship.h
  H:/C/Repos/Starcraft_Team_Project/include/Defines.h
  H:/C/Repos/Starcraft_Team_Project/include/Vector.h
  C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include/stddef.h
@@ -199,7 +200,6 @@ CMakeFiles/starcraft.dir/src/TerranAirship.c.obj
  C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/sdks/_mingw_directx.h
  C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/sdks/_mingw_ddk.h
  C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include/stdbool.h
- H:/C/Repos/Starcraft_Team_Project/include/Airship.h
  C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/stdlib.h
  C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed/limits.h
  C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed/syslimits.h
@@ -231,6 +231,7 @@ CMakeFiles/starcraft.dir/src/Viking.c.obj
  H:/C/Repos/Starcraft_Team_Project/src/Viking.c
  H:/C/Repos/Starcraft_Team_Project/include/Viking.h
  H:/C/Repos/Starcraft_Team_Project/include/TerranAirship.h
+ H:/C/Repos/Starcraft_Team_Project/include/Airship.h
  H:/C/Repos/Starcraft_Team_Project/include/Defines.h
  H:/C/Repos/Starcraft_Team_Project/include/Vector.h
  C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include/stddef.h
@@ -243,7 +244,6 @@ CMakeFiles/starcraft.dir/src/Viking.c.obj
  C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/sdks/_mingw_directx.h
  C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/sdks/_mingw_ddk.h
  C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include/stdbool.h
- H:/C/Repos/Starcraft_Team_Project/include/Airship.h
  C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/i686-w64-mingw32/include/stdlib.h
  C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed/limits.h
  C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed/syslimits.h

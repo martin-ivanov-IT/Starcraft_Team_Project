@@ -11,22 +11,22 @@ int main() {
   BattleField battleField;
   if(generateTerranFleet(&battleField, terranFleet)){
     perror("File \"main.c\",  generateTerranFleet()");
-    exit(0);
+    exit(EXIT_FAILURE);
   }
   
   if(generateProtossFleet(&battleField, protossFleet)){
     perror("File \"main.c\",  generateProtossFleet()");
-    exit(0);
+    exit(EXIT_FAILURE);
   }
   
   if(startBattle(&battleField)){
     perror("File \"main.c\",  startBattle()");
-    exit(0);
+    exit(EXIT_FAILURE);
   }
   
   if(deinit(&battleField)){
     perror("File \"main.c\",  deinit()");
-    exit(0);
+    exit(EXIT_FAILURE);
   }
 
   return EXIT_SUCCESS;
