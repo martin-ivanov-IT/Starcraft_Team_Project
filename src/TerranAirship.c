@@ -1,10 +1,6 @@
 #include"TerranAirship.h"
 
-int initTerranAirship(TerranAirship* terranAirship, enum AirShipType airShipType, const char *inputName, int inputHealth, int inputDamage, int index){
-    if (terranAirship == NULL)
-    {
-        return 1;
-    }
+int initTerranAirship(TerranAirship *terranAirship, enum AirShipType airShipType, const char *inputName, int inputHealth, int inputDamage, int index){
     if(initAirship(terranAirship, airShipType, inputName, inputHealth, inputDamage, index)){
         perror("File \"TerranAirship.c\",  initAirship()");
         exit(0);
@@ -12,7 +8,7 @@ int initTerranAirship(TerranAirship* terranAirship, enum AirShipType airShipType
     return 0;
 }
 
-int terranDealDamageByCarrier(TerranAirship** lastOfTerran, Vector* terranFleet, int attacks, char* atackerName, int atackerID){
+int terranDealDamageByCarrier(TerranAirship **lastOfTerran, Vector* terranFleet, int attacks, char* atackerName, int atackerID){
    if (lastOfTerran == NULL)
     {
         return 1;

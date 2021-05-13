@@ -1,18 +1,13 @@
 #include <stdio.h>
 #include <BattleCruiser.h>
 
-int initBattleCruiser(BattleCruiser* battleCruiser,  enum AirShipType airShipType, const char *inputName, int inputHealth, int inputDamage, int index){
-    if (battleCruiser == NULL)
-    {
-        return 1;
-    }
+void initBattleCruiser(BattleCruiser* battleCruiser,  enum AirShipType airShipType, const char *inputName, int inputHealth, int inputDamage, int index){
     if(initAirship(battleCruiser, airShipType, inputName, inputHealth, inputDamage, index)){
-        perror("File \"BattleCruiser.c\",  initAirship()");
+        printf("ERROR: File \"BattleCruiser.c\",  initAirship()");
         exit(0);
     }
-    
-    return 0;
 }
+
 int battleCruiseProduceDamage(int turn){
     if(turn < 0 ){
         errNo = 1;

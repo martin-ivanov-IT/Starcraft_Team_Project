@@ -6,21 +6,23 @@ int main() {
   const int buffSize = 50;
   char terranFleet[buffSize];
   char protossFleet[buffSize];
-  scanf("%s %s", terranFleet, protossFleet);
+
+  MENU:
+    scanf("%s %s", terranFleet, protossFleet);
   
   BattleField battleField;
+
   if(generateTerranFleet(&battleField, terranFleet)){
-    perror("File \"main.c\",  generateTerranFleet()");
-    exit(0);
+    printf("Invalid Terran airship type! Try again:\n");
+    goto MENU;
   }
   
   if(generateProtossFleet(&battleField, protossFleet)){
-    perror("File \"main.c\",  generateProtossFleet()");
-    exit(0);
+    printf("Invalid Protoss airship type! Try again:\n");
+    goto MENU;
   }
   
   if(startBattle(&battleField)){
-    perror("File \"main.c\",  startBattle()");
     exit(0);
   }
   

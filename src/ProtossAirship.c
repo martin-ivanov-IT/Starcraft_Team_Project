@@ -1,25 +1,18 @@
 #include"ProtossAirship.h"
 #include <stdio.h>
+
 int initProtossAirship(ProtossAirship* protossAirship, const char *inputName, int inputHealth, int inputDamage,
                  int shield, int shieldRegenerateRate, enum AirShipType airShipType, int index){
-                    if (protossAirship == NULL)
-                    {
-                        return 1;
-                    }
-                    if(initAirship(&protossAirship->airship, airShipType, inputName, inputHealth, inputDamage, index)){
-                        perror("File \"ProtossAirship.c\",  initAirship()");
-                        exit(0);
-                    }
-                     protossAirship->shield = shield;
-                     protossAirship->shieldRegenerateRate = shieldRegenerateRate;
-                     return 0;
-                 }
+    if(initAirship(&protossAirship->airship, airShipType, inputName, inputHealth, inputDamage, index)){
+        printf("ERROR: File \"ProtossAirship.c\",  initAirship()");
+        exit(0);
+    }
+    protossAirship->shield = shield;
+    protossAirship->shieldRegenerateRate = shieldRegenerateRate;
+return 0;
+}
                  
 int takeDamageProtoss(ProtossAirship* protossAirship, int damage){
-    // if (protossAirship == NULL)
-    // {
-    //     return 1;
-    // }
    if(protossAirship->shield >= damage){
        protossAirship->shield -= damage;
    }
@@ -32,22 +25,18 @@ int takeDamageProtoss(ProtossAirship* protossAirship, int damage){
 }
 
 int protossDealDamage(ProtossAirship** lastOfProtoss, Vector* protossFleet, int damage, char* atackerName, int atackerID){
-    if (lastOfProtoss == NULL)
-    {
-        return 1;
-    }
     if(takeDamageProtoss((*lastOfProtoss), damage)){
-        perror("File \"ProtossAirship.c\",  takeDamageProtoss()");
+        printf("ERROR: File \"ProtossAirship.c\",  takeDamageProtoss()");
         exit(0);
     }
     errNo = 0;
     if(!isAirshipAlive(&(*lastOfProtoss)->airship)){
         if(errNo){
-            perror("File \"ProtossAirship.c\",  isAirshipAlive()");
+            printf("ERROR: File \"ProtossAirship.c\",  isAirshipAlive()");
             exit(0);
         }
         if(printDead(atackerName, atackerID, (*lastOfProtoss)->airship.ID)){
-            perror("File \"ProtossAirship.c\",  printDead()");
+            printf("ERROR: File \"ProtossAirship.c\",  printDead()");
             exit(0);
         }
         vectorPop(protossFleet);

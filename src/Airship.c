@@ -3,32 +3,24 @@
 #include <Airship.h>
 
 
-int initAirship(Airship* airship, enum AirShipType airShipType, const char *inputName, int inputHealth, int inputDamage, int index){
+int initAirship(Airship *airship, enum AirShipType airShipType, const char *inputName, int inputHealth, int inputDamage, int index){
     strncpy(airship->name, inputName, MAX_AIRSHIP_NAME_SIZE);
-    if (airship == NULL)
-    {
-        return 1;
-    }
-    
     airship->health = inputHealth;
     airship->damage = inputDamage;
     airship->type = airShipType;
     airship->ID = index;
-
     return 0;
 }
 
-int baseProduceDamage(Airship* airship){
-    if (airship == NULL)
-    {
+int baseProduceDamage(Airship *airship){
+    if (airship == NULL){
         errNo = 1;
     }
     errNo = 0;
     return airship->damage;
 }
-int baseTakeDamage(Airship* airship, int damage){
-    if (airship == NULL)
-    {
+int baseTakeDamage(Airship *airship, int damage){
+    if (airship == NULL){
         return 1;
     }
     airship->health -= damage;
@@ -36,11 +28,7 @@ int baseTakeDamage(Airship* airship, int damage){
 }
 
 //reduce health and remove airhip if is dead after attack
-int baseDealDamage(Airship** lastAirship, Vector* army, int damage, char* atackerName,int atackerID){
-    if (lastAirship == NULL)
-    {
-        return 1;
-    }
+int baseDealDamage(Airship **lastAirship, Vector *army, int damage, char *atackerName,int atackerID){
     errNo = 0;
     if(baseTakeDamage((*lastAirship), damage)){
         perror("File \"Airship.c\",  printDead()");
@@ -66,9 +54,8 @@ int baseDealDamage(Airship** lastAirship, Vector* army, int damage, char* atacke
     return 0;
 }
 // check if airship health is under 0 and return true if is above 0
-bool isAirshipAlive(Airship* airship){
-    if (airship == NULL)
-    {
+bool isAirshipAlive(Airship *airship){
+    if (airship == NULL){
         errNo = 1;
     }
     errNo = 0;
@@ -79,12 +66,7 @@ bool isAirshipAlive(Airship* airship){
     return true;
 }
 
-int printDead(char* atackerName,int atackerID, int enemyID)
-{
-    if (atackerName == NULL)
-    {
-        return 1;
-    }
+int printDead(char *atackerName,int atackerID, int enemyID){
     printf("%s with ID: %d killed enemy airship with ID: %d\n",atackerName, atackerID, enemyID);
     return 0;
 }
