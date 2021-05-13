@@ -7,7 +7,7 @@ int initViking(Viking* viking,  enum AirShipType airShipType, const char *inputN
         return EXIT_SUCCESS;
     }
     if(initAirship(viking, airShipType, inputName, inputHealth, inputDamage, index)){
-        perror("File \"Viking.c\",  initAirship()");
+        fprintf(stderr,"File \"Viking.c\",  initAirship()");
         exit(EXIT_FAILURE);
     }
     return EXIT_SUCCESS;

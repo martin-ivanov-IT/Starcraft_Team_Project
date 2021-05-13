@@ -7,7 +7,7 @@ int initBattleCruiser(BattleCruiser* battleCruiser,  enum AirShipType airShipTyp
         return EXIT_FAILURE;
     }
     if(initAirship(battleCruiser, airShipType, inputName, inputHealth, inputDamage, index)){
-        perror("File \"BattleCruiser.c\",  initAirship()");
+        fprintf(stderr, "File \"BattleCruiser.c\",  initAirship()");
         exit(EXIT_FAILURE);
     }
     

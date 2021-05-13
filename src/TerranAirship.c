@@ -1,4 +1,5 @@
 #include"TerranAirship.h"
+#include"stdio.h"
 
 int initTerranAirship(TerranAirship* terranAirship, enum AirShipType airShipType, const char *inputName, int inputHealth, int inputDamage, int index){
     if (terranAirship == NULL)
@@ -6,7 +7,7 @@ int initTerranAirship(TerranAirship* terranAirship, enum AirShipType airShipType
         return EXIT_FAILURE;
     }
     if(initAirship(terranAirship, airShipType, inputName, inputHealth, inputDamage, index)){
-        perror("File \"TerranAirship.c\",  initAirship()");
+        fprintf(stderr,"File \"TerranAirship.c\",  initAirship()");
         exit(EXIT_FAILURE);
     }
     return 0;
@@ -20,18 +21,18 @@ int terranDealDamageByCarrier(TerranAirship** lastOfTerran, Vector* terranFleet,
     for(int i=0;i<attacks;i++)
     {
         if(baseTakeDamage((*lastOfTerran), CARRIER_DAMAGE)){
-            perror("File \"TerranAirship.c\",  baseTakeDamage()");
+            fprintf(stderr,"File \"TerranAirship.c\",  baseTakeDamage()");
             exit(EXIT_FAILURE);
         }
         
         int errNo;
         if(!isAirshipAlive(*lastOfTerran,&errNo)){
             if(errNo){
-                perror("File \"TerranAirship.c\",  isAirshipAlive()");
+                fprintf(stderr,"File \"TerranAirship.c\",  isAirshipAlive()");
                 exit(EXIT_FAILURE);
             }
             if(printDead(atackerName, atackerID, (*lastOfTerran)->ID)){
-                perror("File \"TerranAirship.c\",  printDead()");
+                fprintf(stderr,"File \"TerranAirship.c\",  printDead()");
                exit(EXIT_FAILURE); 
             }
             vectorPop(terranFleet);

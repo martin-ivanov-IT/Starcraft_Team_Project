@@ -43,17 +43,17 @@ int baseDealDamage(Airship** lastAirship, Vector* army, int damage, char* atacke
     }
     int errNo = EXIT_SUCCESS;
     if(baseTakeDamage((*lastAirship), damage)){
-        perror("File \"Airship.c\",  printDead()");
+        fprintf(stderr, "File \"Airship.c\",  printDead()");
         exit(EXIT_FAILURE);
     }
     
     if(!isAirshipAlive(*lastAirship, &errNo)){
         if(errNo){
-            perror("File \"Airship.c\",  isAirshipAlive()");
+            fprintf(stderr, "File \"Airship.c\",  isAirshipAlive()");
             exit(EXIT_FAILURE);
         }
         if(printDead(atackerName,atackerID, (*lastAirship)->ID)){
-            perror("File \"Airship.c\",  printDead()");
+            fprintf(stderr, "File \"Airship.c\",  printDead()");
             exit(EXIT_FAILURE);
         }
         
@@ -63,7 +63,7 @@ int baseDealDamage(Airship** lastAirship, Vector* army, int damage, char* atacke
         }
         (*lastAirship) = (Airship*)vectorBack(army);
     }
-    return 0;
+    return EXIT_SUCCESS;
 }
 // check if airship health is under 0 and return true if is above 0
 bool isAirshipAlive(Airship* airship, int* errNo){

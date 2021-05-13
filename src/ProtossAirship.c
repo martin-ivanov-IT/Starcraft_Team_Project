@@ -7,7 +7,7 @@ int initProtossAirship(ProtossAirship* protossAirship, const char *inputName, in
                         return EXIT_SUCCESS;
                     }
                     if(initAirship(&protossAirship->airship, airShipType, inputName, inputHealth, inputDamage, index)){
-                        perror("File \"ProtossAirship.c\",  initAirship()");
+                        fprintf(stderr,"File \"ProtossAirship.c\",  initAirship()");
                         exit(EXIT_FAILURE);
                     }
                      protossAirship->shield = shield;
@@ -37,17 +37,17 @@ int protossDealDamage(ProtossAirship** lastOfProtoss, Vector* protossFleet, int 
         return EXIT_SUCCESS;
     }
     if(takeDamageProtoss((*lastOfProtoss), damage)){
-        perror("File \"ProtossAirship.c\",  takeDamageProtoss()");
+        fprintf(stderr,"File \"ProtossAirship.c\",  takeDamageProtoss()");
         exit(EXIT_FAILURE);
     }
     int errNo = 0;
     if(!isAirshipAlive(&(*lastOfProtoss)->airship, &errNo)){
         if(errNo){
-            perror("File \"ProtossAirship.c\",  isAirshipAlive()");
+            fprintf(stderr,"File \"ProtossAirship.c\",  isAirshipAlive()");
             exit(EXIT_FAILURE);
         }
         if(printDead(atackerName, atackerID, (*lastOfProtoss)->airship.ID)){
-            perror("File \"ProtossAirship.c\",  printDead()");
+            fprintf(stderr,"File \"ProtossAirship.c\",  printDead()");
             exit(EXIT_FAILURE);
         }
         vectorPop(protossFleet);
