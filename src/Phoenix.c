@@ -12,7 +12,7 @@ int initPhoenix(Phoenix* phoenix, const char *inputName, int inputHealth, int in
     }
     if(initProtossAirship(phoenix, inputName, inputHealth, inputDamage, inputShield, inputShieldRegenerateRate, airShipType, index)){
         fprintf(stderr,"File \"Phoenix.c\",  initProtossAirship()");
-        exit(0);
+        exit(EXIT_FAILURE);
     }
     
     return EXIT_SUCCESS;

@@ -48,6 +48,7 @@ int generateTerranFleet(BattleField *battleField, const char *terranFleetStr)
     }
 
     else{
+      free(&battleField->terranFleet);
       return EXIT_FAILURE;
     }
 
@@ -97,6 +98,7 @@ int generateProtossFleet(BattleField *battleField, const char *protossFleetStr)
       vectorPush(&battleField->protossFleet, carrier);
     }
     else{
+      free(&battleField->protossFleet);
       return EXIT_FAILURE;
     }
     index++;
